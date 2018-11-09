@@ -15,6 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DescriptionRespository extends JpaRepository<Description, Integer>{
 
-    public Description save(Description description);
     
 }

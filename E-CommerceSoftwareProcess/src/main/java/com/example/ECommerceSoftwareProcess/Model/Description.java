@@ -30,8 +30,8 @@ public class Description implements Serializable{
     private String productColor;
     private String picture;
     private String size;
-    @OneToOne
-    @JoinColumn(name="productId")
+//    @OneToOne
+//    @JoinColumn(name="productId")
     private int productId;
 
     public Description() {
