@@ -20,15 +20,15 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "Store")
+//@Table(name = "Store")
 public class Store implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int storeId;
+    private long storeId;
     @OneToOne
-    @JoinColumn(name = "productId")
-    private int productId;
+    @JoinColumn(table = "product" )
+    private long productId;
     private String storeName;
     private int follower;
     private int totalProduct;
@@ -44,7 +44,7 @@ public class Store implements Serializable{
         this.totalProduct = totalProduct;
     }
 
-    public int getStoreId() {
+    public long getStoreId() {
         return storeId;
     }
 
@@ -52,7 +52,7 @@ public class Store implements Serializable{
         this.storeId = storeId;
     }
 
-    public int getProductId() {
+    public long getProductId() {
         return productId;
     }
 

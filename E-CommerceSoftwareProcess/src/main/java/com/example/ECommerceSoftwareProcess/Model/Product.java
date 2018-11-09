@@ -18,16 +18,18 @@ import javax.persistence.Table;
  *
  * @author Bank Puvadol
  */
+
 @Entity
-@Table(name = "Product")
+
+//@Table(name = "Product")
 public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productId;
+    private long productId;
     @OneToOne
-    @JoinColumn(name = "storeId")
-    private int storeId;
+    @JoinColumn(table = "storeId")
+    private long storeId;
     private String productName;
     private int productPrice;
 
@@ -41,7 +43,7 @@ public class Product implements Serializable {
         this.productPrice = productPrice;
     }
 
-    public int getProductId() {
+    public long getProductId() {
         return productId;
     }
 
@@ -49,7 +51,7 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public int getStoreId() {
+    public long getStoreId() {
         return storeId;
     }
 
