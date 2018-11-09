@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -77,7 +78,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "ECommerceproductModel{" + "productId=" + productId + ", storeId=" + storeId + ", productName=" + productName + ", productPrice=" + productPrice + '}';
+        return "ECommerceproductModel{" + "productId=" + productId + ", storeId="  + ", productName=" + productName + ", productPrice=" + productPrice + '}';
     }
     
     

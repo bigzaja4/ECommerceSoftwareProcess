@@ -6,13 +6,18 @@
 package com.example.ECommerceSoftwareProcess.Model;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,6 +34,10 @@ public class Store implements Serializable{
     @OneToOne
     @JoinColumn(table = "product" )
     private long productId;
+    
+    @NotNull
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Product> products;
     private String storeName;
     private int follower;
     private int totalProduct;
@@ -55,9 +64,12 @@ public class Store implements Serializable{
     public long getProductId() {
         return productId;
     }
+    public List<Product> getProduct() {
+        return this.products;
+    }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProduct(List<Product> product) {
+        this.products = product;
     }
 
     public String getStoreName() {
@@ -86,7 +98,7 @@ public class Store implements Serializable{
 
     @Override
     public String toString() {
-        return "Store{" + "storeId=" + storeId + ", productId=" + productId + ", storeName=" + storeName + ", follower=" + follower + ", totalProduct=" + totalProduct + '}';
+        return "Store{" + "storeId=" + storeId + ", productId=" + ", storeName=" + storeName + ", follower=" + follower + ", totalProduct=" + totalProduct + '}';
     }
     
     
