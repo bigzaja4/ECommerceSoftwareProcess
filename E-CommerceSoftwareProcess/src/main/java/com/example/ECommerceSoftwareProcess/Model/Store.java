@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -31,13 +30,13 @@ public class Store implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int storeId;
-    @OneToOne
-    @JoinColumn(table = "product" )
+//    @OneToOne
+//    @JoinColumn(table = "product" )
     private int productId;
     
-    @NotNull
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Product> products;
+//    @NotNull
+//    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private List<Product> products;
     private String storeName;
     private int follower;
     private int totalProduct;
@@ -57,13 +56,13 @@ public class Store implements Serializable{
     public int getProductId() {
         return productId;
     }
-    public List<Product> getProduct() {
-        return this.products;
-    }
-
-    public void setProduct(List<Product> product) {
-        this.products = product;
-    }
+//    public List<Product> getProduct() {
+//        return this.products;
+//    }
+//
+//    public void setProduct(List<Product> product) {
+//        this.products = product;
+//    }
 
     public String getStoreName() {
         return storeName;

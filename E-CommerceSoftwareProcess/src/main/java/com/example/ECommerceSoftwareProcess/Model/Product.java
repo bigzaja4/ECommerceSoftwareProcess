@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -28,14 +26,62 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
-    @OneToOne
-    @JoinColumn(table = "storeId")
+//    @OneToOne
+//    @JoinColumn(table = "storeId")
     private int storeId;
+//    @OneToOne
+//    @JoinColumn(table = "descriptionId")
+//    private int descriptionId;
+//    @OneToOne
+//    @JoinColumn(table = "categoryId")
+//    private int categoryId;
+//    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    @JoinColumn(table = "reviewId")
+//    private int reviewId;
+//    @OneToOne
+//    @JoinColumn(table = "userId")
+//    private int userId;
+    
+    
     private String productName;
-    private int productPrice;
+    private double productPrice;
 
     public Product() {
     }
+
+//    public int getDescriptionId() {
+//        return descriptionId;
+//    }
+//
+//    public void setDescriptionId(int descriptionId) {
+//        this.descriptionId = descriptionId;
+//    }
+//
+//    public int getCategoryId() {
+//        return categoryId;
+//    }
+//
+//    public void setCategoryId(int categoryId) {
+//        this.categoryId = categoryId;
+//    }
+//
+//    public int getReviewId() {
+//        return reviewId;
+//    }
+//
+//    public void setReviewId(int reviewId) {
+//        this.reviewId = reviewId;
+//    }
+//
+//    public int getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    }
+//    
+    
 
     public int getProductId() {
         return productId;
@@ -61,19 +107,19 @@ public class Product implements Serializable {
         this.productName = productName;
     }
 
-    public int getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
-    @Override
-    public String toString() {
-        return "ECommerceproductModel{" + "productId=" + productId + ", storeId="  + ", productName=" + productName + ", productPrice=" + productPrice + '}';
-    }
-    
+//    @Override
+//    public String toString() {
+//        return "Product{" + "productId=" + productId + ", storeId=" + storeId + ", descriptionId=" + descriptionId + ", categoryId=" + categoryId + ", reviewId=" + reviewId + ", userId=" + userId + ", productName=" + productName + ", productPrice=" + productPrice + '}';
+//    }
+
     
 
     
