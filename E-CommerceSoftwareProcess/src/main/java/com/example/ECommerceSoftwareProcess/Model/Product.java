@@ -27,7 +27,7 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long productId;
+    private int productId;
     @OneToOne
     @JoinColumn(table = "storeId")
     private long storeId;

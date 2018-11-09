@@ -30,10 +30,10 @@ public class Store implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long storeId;
+    private int storeId;
     @OneToOne
     @JoinColumn(table = "product" )
-    private long productId;
+    private int productId;
     
     @NotNull
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
