@@ -5,10 +5,21 @@
  */
 package com.example.ECommerceSoftwareProcess.Model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Bank Puvadol
  */
+@Service
 public class StoreService {
+
+    @Autowired
+    private StoreRepository storeRep;
+    
+    public Store insertStoreServ(Store st){
+        return storeRep.save(st);
+    }
     
 }
