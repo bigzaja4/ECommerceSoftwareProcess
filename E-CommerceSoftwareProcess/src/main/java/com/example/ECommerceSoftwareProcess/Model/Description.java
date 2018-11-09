@@ -25,7 +25,7 @@ public class Description implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int description;
+    private int descriptionId;
     private int stockQuantity;
     private String productColor;
     private String picture;
@@ -37,8 +37,8 @@ public class Description implements Serializable{
     public Description() {
     }
 
-    public Description(int description, int stockQuantity, String productColor, String picture, String size, int productId) {
-        this.description = description;
+    public Description(int descriptionId, int stockQuantity, String productColor, String picture, String size, int productId) {
+        this.descriptionId = descriptionId;
         this.stockQuantity = stockQuantity;
         this.productColor = productColor;
         this.picture = picture;
@@ -46,12 +46,12 @@ public class Description implements Serializable{
         this.productId = productId;
     }
 
-    public int getDescription() {
-        return description;
+    public int getDescriptionId() {
+        return descriptionId;
     }
 
-    public void setDescription(int description) {
-        this.description = description;
+    public void setDescriptionId(int descriptionId) {
+        this.descriptionId = descriptionId;
     }
 
     public int getStockQuantity() {
@@ -97,7 +97,7 @@ public class Description implements Serializable{
 
     @Override
     public String toString() {
-        return "Description{" + "description=" + description + ", stockQuantity=" + stockQuantity + ", productColor=" + productColor + ", picture=" + picture + ", size=" + size + ", productId=" + productId + '}';
+        return "Description{" + "descriptionId=" + descriptionId + ", stockQuantity=" + stockQuantity + ", productColor=" + productColor + ", picture=" + picture + ", size=" + size + ", productId=" + productId + '}';
     }
     
     
