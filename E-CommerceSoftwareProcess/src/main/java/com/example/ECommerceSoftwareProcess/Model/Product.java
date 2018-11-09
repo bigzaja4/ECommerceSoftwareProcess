@@ -30,21 +30,14 @@ public class Product implements Serializable {
     private int productId;
     @OneToOne
     @JoinColumn(table = "storeId")
-    private long storeId;
+    private int storeId;
     private String productName;
     private int productPrice;
 
     public Product() {
     }
 
-    public Product(int productId, int storeId, String productName, int productPrice) {
-        this.productId = productId;
-        this.storeId = storeId;
-        this.productName = productName;
-        this.productPrice = productPrice;
-    }
-
-    public long getProductId() {
+    public int getProductId() {
         return productId;
     }
 
@@ -52,7 +45,7 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public long getStoreId() {
+    public int getStoreId() {
         return storeId;
     }
 

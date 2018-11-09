@@ -45,15 +45,8 @@ public class Store implements Serializable{
     public Store() {
     }
 
-    public Store(int storeId, int productId, String storeName, int follower, int totalProduct) {
-        this.storeId = storeId;
-        this.productId = productId;
-        this.storeName = storeName;
-        this.follower = follower;
-        this.totalProduct = totalProduct;
-    }
 
-    public long getStoreId() {
+    public int getStoreId() {
         return storeId;
     }
 
@@ -61,7 +54,7 @@ public class Store implements Serializable{
         this.storeId = storeId;
     }
 
-    public long getProductId() {
+    public int getProductId() {
         return productId;
     }
     public List<Product> getProduct() {
