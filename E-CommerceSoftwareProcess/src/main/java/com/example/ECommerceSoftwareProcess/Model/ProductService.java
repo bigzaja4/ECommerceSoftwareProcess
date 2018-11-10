@@ -5,6 +5,7 @@
  */
 package com.example.ECommerceSoftwareProcess.Model;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,9 @@ public class ProductService {
     
     public Product insertProduct(Product pd){
         return proRep.save(pd);
+    }
+    
+    public List<Product> getAllProduct(){
+        return proRep.findAll();
     }
 }

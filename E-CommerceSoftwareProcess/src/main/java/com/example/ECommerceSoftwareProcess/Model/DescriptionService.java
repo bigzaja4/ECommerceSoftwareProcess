@@ -5,6 +5,7 @@
  */
 package com.example.ECommerceSoftwareProcess.Model;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ public class DescriptionService {
     public Description insertDescription(Description description){
         return descriptionRespository.save(description);
 }
-        
+    
+    public List<Description> getAllDescription(){
+        return descriptionRespository.findAll();
+    }
                 
 }
