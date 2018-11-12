@@ -35,7 +35,7 @@ public class ProductController {
         return prodServ.insertProduct(pd);
     }
     
-    @GetMapping("/product/")
+    @GetMapping("/product")
     public List<Product> getProSer(){
         return prodServ.getAllProduct();
     }

@@ -11,9 +11,9 @@
                   </div>
                   <div class="col-6" style="background: #C44953; padding-top: 50px;text-align: left;">
                         <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" v-model="searchKeyword">
                                 <div class="input-group-append">
-                                  <button class="btn btn-secondary" type="button" id="button"><img src="./pic/magnifier.png" width="20px" height="20px"/></button>
+                                  <button class="btn btn-secondary" type="button" id="button" @click="searchItem()"><img src="./pic/magnifier.png" width="20px" height="20px"/></button>
                                 </div>
                               </div>
                   </div>
@@ -26,16 +26,35 @@
                   </div>
                 </div>
                 <div id="nav">
-                  <!-- <router-link to="/">Home</router-link> |
-                  <router-link to="/about">About</router-link> -->
+                  <router-link :to="`/${itemProduct}`">Home</router-link> |
+                  <router-link to="/about">About</router-link>
                 </div>
                 <router-view/>
-                
                 
 
         </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return{
+      searchKeyword: '',
+      itemProduct: ''
+    }
+  },
+  methods: {
+    searchItem: async function() {
+      let items = await axios.get('http://localhost:8099/product/'+this.searchKeyword)
+      this.itemProduct = items.data
+      console.log(items)
+    }
+  }
+}
+</script>
+
 
 <style>
 #app {
