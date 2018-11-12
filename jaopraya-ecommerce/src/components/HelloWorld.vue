@@ -1,56 +1,60 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <div class="row text-center">
-        <div class="col" style="background: #ECEDEF; padding-right: 15px" v-for="item in product" :key="item">
-            <div class="col-lg-3">
-              <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="productPicture">
-                <div class="card-body">
-                <h4 class="card-title">{{item.productName}}</h4>
-                <p class="card-text">{{item.productPrice}}&nbsp;THB&nbsp;<a class="btn btn-danger" href="#" role="button">Buy</a>
-                  <img src="../pic/shopping-cart1.png" width="30px" height="30px"/></p>
-                </div>
+  <!-- <div class="hello">
+    <h1>{{ msg }}</h1> -->
+  <div>
+    <div class="row text-center" style="padding:25px; margin-top:-55px">
+        <div class="col" v-for="item in product" :key="item">
+          <div class="card-deck">
+          <div class="card" style="width: 14rem;margin-bottom:15px">
+              <img class="card-img-top" src="http://placehold.it/500x325" alt="productPicture">
+              <div class="card-body">
+                 <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{item.productName}}</h5>
+                 <p class="card-text" >เสื้อแจ็คเก็ตวิ่งผู้หญิง</p>
+                 <p class="showPrice"><b>{{item.productPrice}}&nbsp;THB&nbsp;</b>
+                 <a class="btn sale" href="#" role="button">ซื้อเลย</a>
+                 <img src="../pic/shopping-cart1.png" width="20px" height="20px"/>
+                 </p>
               </div>
-            </div>
+          </div>
+          </div>
         </div>
-    </div>
+     </div>
   </div>
 
   
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 axios.defaults.withCredentials = true;
 export default {
   data() {
     return {
       product: {}
-    }
+    };
   },
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: String
   },
   methods: {
-    isNextProduct: function(index){
-        let result = true;
-        if(product[index] == null){
-          result == false;
-        }
-        return result;
+    isNextProduct: function(index) {
+      let result = true;
+      if (product[index] == null) {
+        result == false;
+      }
+      return result;
     },
-    getAllProduct: async function(){
-        let product = await axios.get('http://localhost:8099/product');   
-        this.product = product.data;
-        console.log(this.product)
-     }
+    getAllProduct: async function() {
+      let product = await axios.get("http://localhost:8099/product");
+      this.product = product.data;
+      console.log(this.product);
+    }
   },
   mounted() {
     this.getAllProduct();
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -67,6 +71,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #ffffff;
 }
+
 </style>

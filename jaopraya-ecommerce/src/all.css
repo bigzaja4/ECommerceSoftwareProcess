@@ -1,0 +1,32 @@
+.nameUser{
+    color: white;
+    font-size: 17px;
+    padding-right: 20px;
+
+}
+.iconMenu{
+    margin-top: -10px;
+}
+.text1{
+    color: white;
+    font-size: 30px;
+    margin-top: -22px;
+    font-family: 'Kanit', sans-serif;
+}
+.card-text{
+    font-family: 'Kanit', sans-serif;
+    margin-top: -15px;
+}
+.card-title{
+    margin-top: -10px;
+}
+.sale{
+    background: #C44953;
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+    float: right;
+}
+.showPrice{
+    color: #C44953;
+    font-size: 20px; 
+}
