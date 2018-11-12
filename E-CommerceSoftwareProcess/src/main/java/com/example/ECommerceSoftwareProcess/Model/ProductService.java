@@ -26,4 +26,8 @@ public class ProductService {
     public List<Product> getAllProduct(){
         return proRep.findAll();
     }
+    
+    public Product getProductById(int id){
+        return proRep.findById(id).get();
+    }
 }
