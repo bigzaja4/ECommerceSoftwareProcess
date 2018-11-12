@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="all.css" rel="stylesheet" type="text/css">
+    <link href="homePage.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
   
     <div class="container-fluid" style="background: #ECEDEF;">
@@ -101,11 +101,11 @@ export default {
     background: #C44953;
     color: #fff;
     font-family: 'Kanit', sans-serif;
-    float: right;
+    /* margin-right: -20px; */
 }
 .showPrice{
     color: #C44953;
-    font-size: 20px; 
+    font-size: 16px; 
 }
 
 </style>
