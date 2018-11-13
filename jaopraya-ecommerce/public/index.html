@@ -13,7 +13,7 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <div class="unauthenticated">
+    <!-- <div class="unauthenticated">
       <a class="btn" href="http://localhost:8099/user">Login</a>
     </div>
     <div class="authenticated" style="display: none">
@@ -27,7 +27,6 @@
           : window.location.hash = '';
   }
       $.get("/user", function(data) {
-        console.log(data)
           $("#user").html(data.userAuthentication.details.name);
           $(".unauthenticated").hide()
           $(".authenticated").show()
@@ -39,7 +38,7 @@
       $(".authenticated").hide();
     });
     return true;
-  }
+  } -->
       </script>
       
   </body>
