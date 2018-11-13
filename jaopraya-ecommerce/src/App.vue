@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="homePage.css" rel="stylesheet" type="text/css">
+    <link href="all.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
   
     <div class="container-fluid" style="background: #ECEDEF;">
@@ -13,7 +13,9 @@
                         <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" v-model="searchKeyword">
                                 <div class="input-group-append">
-                                  <button class="btn btn-secondary" type="button" id="button" @click="searchItem()"><img src="./pic/magnifier.png" width="20px" height="20px"/></button>
+                                  <router-link :to="`/${searchKeyword}`">
+                                    <button class="btn btn-secondary" type="button" id="button"><img src="./pic/magnifier.png" width="20px" height="20px"/></button>
+                                  </router-link>
                                 </div>
                               </div>
                   </div>
@@ -26,7 +28,6 @@
                   </div>
                 </div>
                 <div id="nav">
-                  <router-link :to="`/${itemProduct}`">Home</router-link> |
                   <router-link to="/about">About</router-link>
                 </div>
                 <router-view/>
@@ -43,13 +44,6 @@ export default {
     return{
       searchKeyword: '',
       itemProduct: ''
-    }
-  },
-  methods: {
-    searchItem: async function() {
-      let items = await axios.get('http://localhost:8099/product/'+this.searchKeyword)
-      this.itemProduct = items.data
-      console.log(items)
     }
   }
 }
@@ -101,11 +95,11 @@ export default {
     background: #C44953;
     color: #fff;
     font-family: 'Kanit', sans-serif;
-    /* margin-right: -20px; */
+    float: right;
 }
 .showPrice{
     color: #C44953;
-    font-size: 16px; 
+    font-size: 20px; 
 }
 
 </style>
