@@ -5,6 +5,7 @@
  */
 package com.example.ECommerceSoftwareProcess.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,10 @@ public class ProductController {
     }
     
     @GetMapping("/product/{id}")
-    public Product getOneProduct(@PathVariable int id){
-        return prodServ.getProductById(id);
+    public List<Product> getOneProduct(@PathVariable int id){
+        List<Product> product = new ArrayList<>();
+        product.add(prodServ.getProductById(id));
+        return product;
     }
 
 }

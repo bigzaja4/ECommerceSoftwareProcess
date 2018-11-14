@@ -28,7 +28,7 @@
                   </div>
                 </div>
                 <div id="nav">
-                  <router-link to="/about">About</router-link>
+                  <!-- <router-link to="/about">About</router-link> -->
                 </div>
                 <router-view/>
                 
@@ -38,12 +38,10 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   data() {
     return{
       searchKeyword: '',
-      itemProduct: ''
     }
   }
 }

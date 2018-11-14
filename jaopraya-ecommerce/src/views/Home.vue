@@ -1,10 +1,8 @@
 <template>
   <div class="home">  
-    {{searchKey}}  <br>
-    {{$route.params.searchKey}}
     <div class="container">
     <div class="row text-center" >
-      <HelloWorld v-for="item in product" :key="item.id" :product="item" />
+      <HelloWorld v-for="item in product" :key="item" :product="item" />
     </div>
   </div></div>
 </template>
@@ -36,25 +34,28 @@ export default {
   },
   methods: {
     getAllProduct: async function() {
-      let product = await axios.get("http://localhost:8099/product");
+      let product = await axios.get("http://localhost:8099/product");  
       this.product = product.data;
       console.log(this.product);
     },
     getSearchKey: function(searchKey){
       this.searchKey = searchKey;  
       console.log(' เรียก getSearchKey fucntion : ' + this.searchKey);
+      if(this.searchKey == null |this.searchKey == undefined){
+        this.getAllProduct();
+      }else{
+        console.log("Hello El")
+        this.searchItem(this.searchKey);
+      }
+    },
+    searchItem: async function() {
+      let product = await axios.get('http://localhost:8099/product/'+this.searchKey)
+      this.product = product.data
+      console.log(this.product)
     }
-    // searchItem: async function() {
-    //   let items = await axios.get('http://localhost:8099/product/'+this.searchKeyword)
-    //   this.itemProduct = items.data
-    //   console.log(items)
-    // }
   },
   mounted() {
     this.getAllProduct();
-  },
-  updated() {
-    
   }
 }
 </script>
