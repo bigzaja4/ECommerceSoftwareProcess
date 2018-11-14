@@ -28,6 +28,11 @@ export default new Router({
       path: '/item/description',
       name: 'description',
       component: () => import('./views/Description.vue')
+    },
+    {
+      path: '/cart/cart',
+      name: 'cart',
+      component: () => import('./views/Cart.vue')
     }
 
   ]

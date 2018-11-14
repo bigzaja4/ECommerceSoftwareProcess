@@ -15,7 +15,10 @@
                  <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">เสื้อแจ็คเก็ตวิ่งผู้หญิง</p>
                  <p class="showPrice"><b>{{product.productPrice}}&nbsp;THB&nbsp;</b>
                  <a class="btn sale btn-sm" href="#" role="button">ซื้อเลย</a>
-                 <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-top:5px;margin-right:5px"/>
+                 <router-link to="/cart/cart">
+                    <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-top:5px;margin-right:5px"/>
+                  </router-link>
+                  <router-view/>
                  </p>
               </div>
           </div>&nbsp;&nbsp;

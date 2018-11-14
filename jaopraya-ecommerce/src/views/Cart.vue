@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <!-- <div class="container">
                 <div class="row">
                   <div class="col" style="background: #C44953; padding-right: 15px">
                     <img src="pic/logo.png" width="145px" height="100px"/>
@@ -19,7 +19,7 @@
                         <img src="pic/notification.png" width="30px" height="30px"/>
                         <img src="pic/settings-work-tool.png" width="30px" height="30px"/></div>
                   </div>
-                </div>
+                </div> -->
                 <div class="row">
                         <div class="col" style="background: #ECEDEF; padding-right: 15px"><br>
                             <div class="topic"><h3>รถเข็น</h3></div>
