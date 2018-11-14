@@ -28,22 +28,12 @@ public class Description implements Serializable{
     private int descriptionId;
     private int stockQuantity;
     private String productColor;
-    private String picture;
     private String size;
 //    @OneToOne
 //    @JoinColumn(name="productId")
     private int productId;
 
     public Description() {
-    }
-
-    public Description(int descriptionId, int stockQuantity, String productColor, String picture, String size, int productId) {
-        this.descriptionId = descriptionId;
-        this.stockQuantity = stockQuantity;
-        this.productColor = productColor;
-        this.picture = picture;
-        this.size = size;
-        this.productId = productId;
     }
 
     public int getDescriptionId() {
@@ -70,14 +60,6 @@ public class Description implements Serializable{
         this.productColor = productColor;
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
     public String getSize() {
         return size;
     }
@@ -94,12 +76,6 @@ public class Description implements Serializable{
         this.productId = productId;
     }
     
-
-    @Override
-    public String toString() {
-        return "Description{" + "descriptionId=" + descriptionId + ", stockQuantity=" + stockQuantity + ", productColor=" + productColor + ", picture=" + picture + ", size=" + size + ", productId=" + productId + '}';
-    }
-    
-    
+       
     
 }

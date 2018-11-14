@@ -45,7 +45,7 @@ public class Product implements Serializable {
     
     private String productName;
     private double productPrice;
-
+    private String picture;
     public Product() {
     }
 
@@ -115,10 +115,19 @@ public class Product implements Serializable {
         this.productPrice = productPrice;
     }
 
+    
 //    @Override
 //    public String toString() {
 //        return "Product{" + "productId=" + productId + ", storeId=" + storeId + ", descriptionId=" + descriptionId + ", categoryId=" + categoryId + ", reviewId=" + reviewId + ", userId=" + userId + ", productName=" + productName + ", productPrice=" + productPrice + '}';
 //    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     
 
