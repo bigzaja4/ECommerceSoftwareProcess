@@ -4,7 +4,7 @@
         <div class="col-lg">
           <div class="card-deck">
           <div class="card" style="width: 13rem;margin-bottom:15px">
-              <img class="card-img-top" src="http://placehold.it/500x325" alt="productPicture">
+              <img class="card-img-top" :src="product.picture" alt="productPicture">
               <div class="card-body">
                  <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{product.productName}}</h5>
                  <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">เสื้อแจ็คเก็ตวิ่งผู้หญิง</p>
