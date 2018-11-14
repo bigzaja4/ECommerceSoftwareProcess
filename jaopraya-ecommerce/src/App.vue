@@ -97,7 +97,7 @@ export default {
 }
 .showPrice{
     color: #C44953;
-    font-size: 20px; 
+    font-size: 18px; 
 }
 
 </style>
