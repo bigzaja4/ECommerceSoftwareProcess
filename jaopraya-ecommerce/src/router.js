@@ -23,6 +23,12 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/item/description',
+      name: 'description',
+      component: () => import('./views/Description.vue')
     }
+
   ]
 })

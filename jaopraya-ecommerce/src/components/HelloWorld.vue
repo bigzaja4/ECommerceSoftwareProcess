@@ -5,7 +5,10 @@
           <div class="card-deck">
           <div class="card" style="width: 13rem;margin-bottom:15px">
               <div class="img-resize">
+                <router-link to="/item/Description">
                 <img class="card-img-top" :src="product.picture" alt="productPicture" >
+                </router-link>
+                <router-view/>
               </div>
               <div class="card-body">
                  <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{product.productName}}</h5>
@@ -20,7 +23,7 @@
         </div>
      </div>
   </div>
-
+  
   
 </template>
 
