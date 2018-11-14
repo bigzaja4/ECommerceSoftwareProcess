@@ -26,13 +26,12 @@ public class Description implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int descriptionId;
+    private String descriptionDetail;
     private int stockQuantity;
     private String productColor;
     private String size;
-//    @OneToOne
-//    @JoinColumn(name="productId")
-    private int productId;
-
+    private String picture;
+    
     public Description() {
     }
 
@@ -68,14 +67,20 @@ public class Description implements Serializable{
         this.size = size;
     }
 
-    public int getProductId() {
-        return productId;
+    public String getDescriptionDetail() {
+        return descriptionDetail;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setDescriptionDetail(String descriptionDetail) {
+        this.descriptionDetail = descriptionDetail;
     }
-    
-       
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
     
 }
