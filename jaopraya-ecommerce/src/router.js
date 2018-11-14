@@ -25,9 +25,10 @@ export default new Router({
       component: Home
     },
     {
-      path: '/item/description',
+      path: '/item/description/:id',
       name: 'description',
-      component: () => import('./views/Description.vue')
+      component: () => import('./views/Description.vue'),
+      props: true
     },
     {
       path: '/cart/cart',
