@@ -140,3 +140,21 @@
 
   
 </template>
+<style>
+    .nameUser{
+    color: white;
+    font-size: 17px;
+    padding-right: 20px;
+}
+.iconMenu{
+    
+    margin-top: -10px;
+}
+tr{padding-top: 50px; }
+
+table {
+    
+    border: 1px solid  #dc3545! ;
+}
+
+</style>
