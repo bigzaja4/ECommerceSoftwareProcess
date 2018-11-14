@@ -111,3 +111,24 @@
 
         </div>
 </template>
+<style scoped>
+.nameUser{
+    color: white;
+    font-size: 17px;
+    padding-right: 20px;
+}
+.iconMenu{
+    
+    margin-top: -10px;
+}
+.textbox{
+    border:10px solid #C44953;
+    margin-left:180px;
+    margin-top: 30px;
+
+}
+.cfmbtn{
+    width: 200px;
+  margin: 0 auto; 
+}
+</style>
