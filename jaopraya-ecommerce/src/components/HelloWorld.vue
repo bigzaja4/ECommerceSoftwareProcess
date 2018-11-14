@@ -4,13 +4,15 @@
         <div class="col-lg">
           <div class="card-deck">
           <div class="card" style="width: 13rem;margin-bottom:15px">
-              <img class="card-img-top" :src="product.picture" alt="productPicture">
+              <div class="img-resize">
+                <img class="card-img-top" :src="product.picture" alt="productPicture" >
+              </div>
               <div class="card-body">
                  <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{product.productName}}</h5>
                  <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">เสื้อแจ็คเก็ตวิ่งผู้หญิง</p>
-                 <p class="showPrice"><b>{{product.productPrice}}&nbsp;THB&nbsp;</b>&nbsp;
+                 <p class="showPrice"><b>{{product.productPrice}}&nbsp;THB&nbsp;</b>
                  <a class="btn sale btn-sm" href="#" role="button">ซื้อเลย</a>
-                 <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-top:5px"/>
+                 <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-top:5px;margin-right:5px"/>
                  </p>
               </div>
           </div>&nbsp;&nbsp;
@@ -46,6 +48,17 @@ li {
 }
 a {
   color: #ffffff;
+}
+div.img-resize img {
+  width: 13rem;
+  height: auto;
+} 
+
+div.img-resize {
+  width: 13rem;
+  height: 13rem;
+  overflow: hidden;
+  text-align: center;
 }
 
 </style>
