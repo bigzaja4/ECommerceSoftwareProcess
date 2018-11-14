@@ -1,7 +1,6 @@
 <template>
     <div class="description">  
  
-    
   <h3>ข้อมูลสินค้า</h3> 
     <div  class="row px-3 py-3">
       <div class="col-10 offset-1 border border-danger" style="border-width:3px !important"> 
@@ -100,3 +99,30 @@
     </table>
     </div>
 </template>
+
+<script>
+import axios from "axios";  
+axios.defaults.withCredentials = true; 
+export default {
+  data() {
+    return {
+        description: {},
+        id: ''
+    };
+  },
+  props: {
+    id: ''
+  },
+  name: "Description",
+  methods: {
+      getDescription: async function() {
+      let desciption = await axios.get('http://localhost:8099/description/'+this.id)
+      this.description = desciption.data
+      console.log(this.description)
+    }
+  },
+  mounted() {
+      this.getDescription();
+  }
+};
+</script>

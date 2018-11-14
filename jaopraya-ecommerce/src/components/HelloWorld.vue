@@ -5,7 +5,7 @@
           <div class="card-deck">
           <div class="card" style="width: 13rem;margin-bottom:15px">
               <div class="img-resize">
-                <router-link to="/item/Description">
+                <router-link :to="`/item/description/${product.productId}`">
                 <img class="card-img-top" :src="product.picture" alt="productPicture" >
                 </router-link>
                 <router-view/>
