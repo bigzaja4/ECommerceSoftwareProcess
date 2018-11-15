@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
     <br>
     <br>
   <h3>ข้อมูลสินค้า</h3> 
@@ -104,7 +104,7 @@
     </div>
 
     <br>
-    &nbsp;<h3>รายละเอียดสินค้าเพิ่มเติม</h3>
+    <h3>รายละเอียดสินค้าเพิ่มเติม</h3>
     
     <div class="row px-4 py-4">
       <div class="col-10 offset-1 border border-danger" style="border-width:3px !important">
@@ -120,41 +120,23 @@
         </div>
       </div>
     </div>
-    &nbsp;<h3>รีวิวสินค้า</h3><br>
-    <br>
-    <table class="col-10 offset-1 table" style="border: 3px solid #dc3545">
-      <tr>
-        <th>4.1 </th>
-        <th> ทั้งหมด </th>
-      </tr>
-      <tr>
-        <td colspan="2">img</td>
-        
-      </tr>
-      <tr>
-       <td colspan="2">
-         May
-       </td>
-      </tr>
-    </table>
-
+  
   
 </template>
 <style>
-    .nameUser{
-    color: white;
-    font-size: 17px;
-    padding-right: 20px;
+.nameUser {
+  color: white;
+  font-size: 17px;
+  padding-right: 20px;
 }
-.iconMenu{
-    
-    margin-top: -10px;
+.iconMenu {
+  margin-top: -10px;
 }
-tr{padding-top: 50px; }
+tr {
+  padding-top: 50px;
+}
 
 table {
-    
-    border: 1px solid  #dc3545! ;
+  border: 1px solid #dc3545!;
 }
-
 </style>

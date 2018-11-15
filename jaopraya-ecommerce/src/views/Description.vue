@@ -1,7 +1,6 @@
 <template>
     <div class="description">  
- 
-  <h3>ข้อมูลสินค้า</h3> 
+        <h3>ข้อมูลสินค้า</h3> 
     <div  class="row px-3 py-3">
       <div class="col-10 offset-1 border border-danger" style="border-width:3px !important"> 
         <div class="row">
@@ -12,26 +11,26 @@
                 width="200px"
                 height="150px"
                 style="border: 3px solid #C44953"
-              />
-              <br /><br />
+              >
+              <br><br>
               <img
                 src="pic/nikerepel2.png"
                 width="50px"
                 height="50px"
                 style="border: 3px solid #C44953"
-              />
+              >
               <img
                 src="pic/nikerepel3.png"
                 width="50px"
                 height="50px"
                 style="border: 3px solid #C44953"
-              />
+              >
               <img
                 src="pic/nikerepel2.png"
                 width="50px"
                 height="50px"
                 style="border: 3px solid #C44953"
-              />
+              >
             </div>
           </div>
           <div class="col">
@@ -50,14 +49,14 @@
                   <a class="dropdown-item" href="#">L</a>
                 </div>
               
-              </div>
-              <br>
-              จำนวน &nbsp;
-              <input type="number" style="width:50px">
-              <br>
-              <br>
-              <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>
-              <button type="button" class="btn btn-danger">ซื้อสินค้า</button>
+            </div>
+            <br>
+            จำนวน &nbsp; {{description.stockQuantity}} &nbsp;
+            <input type="number" style="width:50px">
+            <br>
+            <br>
+            <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>
+            <button type="button" class="btn btn-danger">ซื้อสินค้า</button>
           </div>
         </div>
       </div>
@@ -71,33 +70,16 @@
         <div class="row">
           <div style="margin: 50px;" class="col-4 ">
             <div>
-              หมวดหมู่ <br />
-              ยี่ห้อ <br />
-              วัสดุภายนอก<br />
+              Detail: {{description.descriptionDetail}
+              ยี่ห้อ <br>
+              วัสดุภายนอก<br>
               รูปแบบ
             </div>
           </div>
         </div>
       </div>
     </div>
-    &nbsp;<h3>รีวิวสินค้า</h3><br>
-    <br>
-    <table class="col-10 offset-1 table" style="border: 3px solid #dc3545">
-      <tr>
-        <th>4.1 </th>
-        <th> ทั้งหมด </th>
-      </tr>
-      <tr>
-        <td colspan="2">img</td>
-        
-      </tr>
-      <tr>
-       <td colspan="2">
-         May
-       </td>
-      </tr>
-    </table>
-    </div>
+  </div>
 </template>
 
 <script>
