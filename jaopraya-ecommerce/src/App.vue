@@ -7,7 +7,9 @@
     <div class="container-fluid" style="background: #ECEDEF;">
                 <div class="row" style="">
                   <div class="col" style="background: #C44953;">
-                    <img src="./pic/logo.png" width="145px" height="100px" />
+                    <router-link to="/">
+                      <img src="./pic/logo.png" width="145px" height="100px" />
+                    </router-link>
                   </div>
                   <div class="col-6" style="background: #C44953; padding-top: 50px;text-align: left;">
                         <div class="input-group mb-3">

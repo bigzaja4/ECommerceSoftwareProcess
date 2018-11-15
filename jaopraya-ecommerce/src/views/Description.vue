@@ -7,26 +7,26 @@
           <div style="margin: 50px;" class="col-4 " >
             <div>
               <img
-                src="pic/nikerepel.png"
+                :src="description.picture"
                 width="200px"
                 height="150px"
                 style="border: 3px solid #C44953"
               >
               <br><br>
               <img
-                src="pic/nikerepel2.png"
+                :src="description.picture"
                 width="50px"
                 height="50px"
                 style="border: 3px solid #C44953"
               >
               <img
-                src="pic/nikerepel3.png"
+                :src="description.picture"
                 width="50px"
                 height="50px"
                 style="border: 3px solid #C44953"
               >
               <img
-                src="pic/nikerepel2.png"
+                :src="description.picture"
                 width="50px"
                 height="50px"
                 style="border: 3px solid #C44953"
@@ -55,7 +55,7 @@
             <input type="number" style="width:50px">
             <br>
             <br>
-            <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>
+            <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button> &nbsp;
             <button type="button" class="btn btn-danger">ซื้อสินค้า</button>
           </div>
         </div>
@@ -69,11 +69,11 @@
       <div class="col-10 offset-1 border border-danger" style="border-width:3px !important">
         <div class="row">
           <div style="margin: 50px;" class="col-4 ">
-            <div>
-              Detail: {{description.descriptionDetail}
-              ยี่ห้อ <br>
-              วัสดุภายนอก<br>
-              รูปแบบ
+            <div> 
+              Detail: {{description.descriptionDetail}} <br>
+              Color: {{description.productColor}} <br>
+              Size : {{description.size}}
+
             </div>
           </div>
         </div>
@@ -98,8 +98,8 @@ export default {
   name: "Description",
   methods: {
       getDescription: async function() {
-      let desciption = await axios.get('http://localhost:8099/description/'+this.id)
-      this.description = desciption.data
+      let description = await axios.get('http://localhost:8099/description/'+this.id)
+      this.description = description.data
       console.log(this.description)
     }
   },
