@@ -24,7 +24,7 @@
                     <p class="userName" ><img src="./pic/user-avatar-main-picture.png" width="35px" height="35px"/>&nbsp;&nbsp;<b>Prayut</b></p>
                     <div class="iconMenu">
                         <router-link to='/cart/cart'>
-                          <img src="./pic/shopping-cart.png" width="40px" height="40px"/>
+                         ({{getCartLength}}) <img src="./pic/shopping-cart.png" width="40px" height="40px"/>
                         </router-link>
                         <img src="./pic/notification.png" width="30px" height="30px"/>
                         <img src="./pic/settings-work-tool.png" width="30px" height="30px"/></div>
@@ -44,7 +44,8 @@
 import {mapGetters, mapActions} from 'vuex'
 export default {
   computed: {
-    ...mapGetters(['getIsCartPage'])
+    ...mapGetters(['getIsCartPage']),
+    ...mapGetters(['getCartLength'])
   },methods: {  
     ...mapActions(['notCartPage'])
   },

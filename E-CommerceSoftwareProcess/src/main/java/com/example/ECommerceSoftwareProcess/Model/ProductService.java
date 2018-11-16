@@ -5,6 +5,7 @@
  */
 package com.example.ECommerceSoftwareProcess.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProductService {
-    
     @Autowired
     private ProductRepository proRep;
     
@@ -29,5 +29,13 @@ public class ProductService {
     
     public Product getProductById(int id){
         return proRep.findById(id).get();
+    }
+    
+    public List<Product> addProductToCart(List<Integer> productId){
+        List<Product> cart = new ArrayList<>();
+        for (Integer id : productId) {
+            cart.add(getProductById(id));
+        }
+        return cart;
     }
 }

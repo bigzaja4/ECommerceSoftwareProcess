@@ -15,10 +15,10 @@
                  <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{product.category}}</p>
                  <p class="showPrice"><b>{{product.productPrice}}&nbsp;THB&nbsp;</b>
                  <a class="btn sale btn-sm" href="#" role="button">ซื้อเลย</a>
-                 <router-link to="/cart/cart">
-                    <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-top:5px;margin-right:5px"/>
-                  </router-link>
-                  <router-view/>
+                 <button @click="addIdToCart(product.productId)">
+                    <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-top:5px;margin-right:5px">
+                 </button>
+                  
                  </p>
               </div>
           </div>&nbsp;&nbsp;
@@ -31,10 +31,18 @@
 </template>
 
 <script>
+import {mapGetters,mapActions} from 'vuex'
 export default {
   name: "HelloWorld",
   props: {
     product: {}
+  },
+  computed: {
+    ...mapGetters(['getCart'])
+  },
+  methods: {
+    ...mapActions(['addIdToCart']),
+    ...mapActions(['clearIdCart'])
   }
 };
 </script>

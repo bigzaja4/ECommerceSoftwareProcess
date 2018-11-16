@@ -17,57 +17,35 @@
                               </tr>
 
                             </table>
+                        <div v-for="item in product" :key="item">
                           <table width=70% class="textbox" cellpadding="10">
-                              
                             <tr>
                               <td>
                                  <input type='checkbox' name='btn' id='btn'  onclick='check_agree();'/>
                               </td>
-                              <td><img src="pic/nike.png" width="170px" height="100px" style="border: 3px solid #C44953"/></td>
-                              <td>NIKE Repel<br>เสื้อเจ็คเก๊ตสำหรับผู้หญิง</td>
+                              <td><img :src="`${item.picture}`" width="170px" height="100px" style="border: 3px solid #C44953"/></td>
+                              <td>{{item.productName}}<br>{{item.category}}</td>
                                 <td>
-                                  2,900 THB
+                                  {{item.productPrice}} THB
                                 </td>
                                 <td>
-                                  <table border="1px">
+                                  <table border="0px">
                                     <tr>
-                                      <input type="number" style="width: 50px" >
+                                        1
+                                      <!-- <input type="number" style="width: 50px" v-model="quantity"> -->
                                     </tr>
                                   </table>
                                 </td>
                                 <td>
-                                    2,900 THB
+                                    {{item.productPrice}} THB
                                 </td>
                                 <td>
                                     <button type="button" id="deletebutton">ลบ</button>
                                 </td>
                             </tr>
                           </table>
-                          <table width=70% class="textbox" cellpadding="10">
-                              <tr>
-                                  <td>
-                                      <input type='checkbox' name='btn' id='btn'  onclick='check_agree();'/>
-                                   </td>
-                                <td style="border :10px"><img src="pic/nike.png" width="170px" height="100px" style="border: 3px solid #C44953"/></td>
-                                <td >NIKE Epic La<br>กางเกงวิ่งรัดรูปผู้หญิง&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>
-                                    3,700 THB
-                                </td>
-                                <td>
-                                <table border="1px">
-                                    <tr>
-                                        <input type="number" style="width: 50px" >
-                                    </tr>
-                                  </table>
-                                </td>
-                                <td>
-                                    3,700 THB
-                                </td>
-                                <td>
-                                    <button type="button" id="deletebutton">ลบ</button>
-                                </td>
-                              </tr>
-                            </table>
+                        </div>
+
                             <table width=70% class="textbox" cellpadding="10" >
                                 <tr>
                                     <td>
@@ -81,6 +59,8 @@
                               </table>
                               <br>
                               <div class="cfmbtn">
+                              <button type="button" id="confirmbutton" @click="clearIdCart()">ล้างตระกร้าสินค้า</button>
+                              <br>
                               <button type="button" id="confirmbutton" >ยืนยันการสั่งซื้อสินค้า</button>
                               </div>
                               <br> <br> <br> <br> <br> <br> 
@@ -93,16 +73,35 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import axios from "axios";  
+axios.defaults.withCredentials = true;
 export default {
-  computed: {
-    ...mapGetters(['getIsCartPage'])
-  },methods: {  
-    ...mapActions(['inCartPage'])
-  },
-  mounted() {
-      this.inCartPage();
-      
-  }
+    data() {
+        return {
+            product: [],
+            quantity: 0
+
+        }
+    },
+    computed: {
+        ...mapGetters(['getIsCartPage']),
+        ...mapGetters(['getIdCart'])
+    },methods: {  
+        ...mapActions(['inCartPage']),
+        ...mapActions(['clearIdCart']),
+        addItemToCart: async function() {
+            let productId = this.getIdCart;
+            for(let i=0; i<productId.length; i++){ 
+                let product = await axios.get('http://localhost:8099/product/'+productId[i])
+                this.product.push(product.data);   
+            }
+            console.log(this.product)
+        }
+    },
+    mounted() {
+        this.inCartPage();
+        this.addItemToCart();
+    }   
 }
 </script>
 

@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     count: 0,
-    isCartPage: true
+    isCartPage: true,
+    cart: []
   },
   mutations: {
     addCount: (state, amount) => {
@@ -17,6 +18,12 @@ export default new Vuex.Store({
     },
     notCartPage: (state) => {
       state.isCartPage = true;
+    },
+    addIdToCart: (state, productId) => {
+      state.cart.push(productId);
+    },
+    clearIdCart: (state) => {
+      state.cart = [];
     }
     
   },
@@ -29,6 +36,13 @@ export default new Vuex.Store({
     },
     notCartPage: ({commit}) => {
       commit('notCartPage')
+    },
+    addIdToCart: ({commit},productId) => {
+      commit('addIdToCart',productId)
+      console.log('Add: '+productId)
+    },
+    clearIdCart: ({commit}) => {
+      commit('clearIdCart')
     }
   },
   getters: {
@@ -37,6 +51,12 @@ export default new Vuex.Store({
     },
     getIsCartPage: state => {
       return state.isCartPage
+    },
+    getIdCart: state => {
+      return state.cart
+    },
+    getCartLength: state => {
+      return state.cart.length
     }
   }
 })
