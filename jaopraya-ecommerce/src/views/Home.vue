@@ -10,9 +10,13 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";  
 axios.defaults.withCredentials = true;
 export default {
+  computed: {
+    ...mapGetters(['getIsCartPage'])
+  },
   data() {
     return {
       product: {},
@@ -52,10 +56,12 @@ export default {
       let product = await axios.get('http://localhost:8099/product/'+this.searchKey)
       this.product = product.data
       console.log(this.product)
-    }
+    },
+    ...mapActions(['notCartPage'])
   },
   mounted() {
     this.getAllProduct();
+    this.notCartPage();
   }
 }
 </script>

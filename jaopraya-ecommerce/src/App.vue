@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="all.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-  
     <div class="container-fluid" style="background: #ECEDEF;">
                 <div class="row" style="">
                   <div class="col" style="background: #C44953;">
@@ -12,7 +11,7 @@
                     </router-link>
                   </div>
                   <div class="col-6" style="background: #C44953; padding-top: 50px;text-align: left;">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" v-show="getIsCartPage">
                                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" v-model="searchKeyword">
                                 <div class="input-group-append">
                                   <router-link :to="`/${searchKeyword}`">
@@ -24,7 +23,9 @@
                   <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 30px; text-align: right;">     
                     <p class="userName" ><img src="./pic/user-avatar-main-picture.png" width="35px" height="35px"/>&nbsp;&nbsp;<b>Prayut</b></p>
                     <div class="iconMenu">
-                        <img src="./pic/shopping-cart.png" width="40px" height="40px"/>
+                        <router-link to='/cart/cart'>
+                          <img src="./pic/shopping-cart.png" width="40px" height="40px"/>
+                        </router-link>
                         <img src="./pic/notification.png" width="30px" height="30px"/>
                         <img src="./pic/settings-work-tool.png" width="30px" height="30px"/></div>
                   </div>
@@ -40,11 +41,21 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
+  computed: {
+    ...mapGetters(['getIsCartPage'])
+  },methods: {  
+    ...mapActions(['notCartPage'])
+  },
   data() {
     return{
       searchKeyword: '',
     }
+  },
+  mounted() {
+      this.notCartPage();
+      
   }
 }
 </script>
