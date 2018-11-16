@@ -1,84 +1,73 @@
 <template>
     <div class="description">  
-        <h3>ข้อมูลสินค้า</h3> 
-    <div  class="row px-3 py-3">
-      <div class="col-10 offset-1 border border-danger" style="border-width:3px !important"> 
-        <div class="row">
-          <div style="margin: 50px;" class="col-4 " >
-            <div>
+      <div  class="row px-3 " style="margin-top:-30px">
+        <h3 style="margin-left:150px;color:#ffffff; text-shadow: black 0.1em 0.1em 0.3em;font-size:35px">ข้อมูลสินค้า</h3> 
+      </div>
+    <div  class="row px-3 ">
+      <div class="col-10 offset-1 borderR " style="border-width:3px !important;background: #ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
+        <div class="row" style="margin-left:20px">
+          <div style="margin: 30px;" class="col-4 " >
+            <div class="img-resize" style="border: 2px solid #959595  ;border-radius: 10px;">
               <img
-                :src="description.picture"
-                width="200px"
-                height="150px"
-                style="border: 3px solid #C44953"
+                :src="description.picture" 
               >
-              <br><br>
-              <img
-                :src="description.picture"
-                width="50px"
-                height="50px"
-                style="border: 3px solid #C44953"
-              >
-              <img
-                :src="description.picture"
-                width="50px"
-                height="50px"
-                style="border: 3px solid #C44953"
-              >
-              <img
-                :src="description.picture"
-                width="50px"
-                height="50px"
-                style="border: 3px solid #C44953"
-              >
+              
+            
             </div>
           </div>
-          <div class="col">
-            <h1>{{product.productName}}</h1><br>
+          <div class="col" style="margin-left:30px">
+            <br><br><br>
+            <h1 style="text-align:left;font-size:30px;width:400px;word-wrap:break-word;">{{product.productName}}</h1>
             
-            {{product.category}}<br>
-            {{product.productPrice}}  บาท<br>
-            <br>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  ตัวเลือกสินค้า
+            <div class="cutText" style="text-align:left;width:500px">{{product.category}}</div><br>
+            <p style="text-align:left;font-size:30px;color:#C44953">  <Blink><b>&nbsp;&nbsp;&nbsp;{{product.productPrice}}</b></Blink>  บาท</p>
+           
+            <div style="text-align:left;">
+            <div class="dropdown" style="margin-bottom:5px">
+               ตัวเลือกสินค้า &nbsp;
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  ขนาด
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">S</a>
-                  <a class="dropdown-item" href="#">M</a>
-                  <a class="dropdown-item" href="#">L</a>
+                  <a class="dropdown-item" href="#">ไซส์ S</a>
+                  <a class="dropdown-item" href="#">ไซส์ M</a>
+                  <a class="dropdown-item" href="#">ไซส์ L</a>
                 </div>
-              
             </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; จำนวน &nbsp; 
+                <input type="number" style="width:50px;border-radius: 5px">
+                &nbsp; มีสินค้าทั้งหมด {{description.stockQuantity}} ชิ้น
+            
+            
+        
             <br>
-            จำนวน &nbsp; {{description.stockQuantity}} &nbsp;
-            <input type="number" style="width:50px">
             <br>
-            <br>
-            <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button> &nbsp;
+            <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>&nbsp;
             <button type="button" class="btn btn-danger">ซื้อสินค้า</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <br>
-    &nbsp;<h3>รายละเอียดสินค้าเพิ่มเติม</h3>
+    <!-- ----------------------------------------------- -->
+    <h3 style="text-align:left;margin-left:150px;color:#ffffff; text-shadow: black 0.1em 0.1em 0.3em;font-size:35px">รายละเอียดสินค้าเพิ่มเติม</h3>
     
-    <div class="row px-4 py-4">
-      <div class="col-10 offset-1 border border-danger" style="border-width:3px !important">
+    <div class="row px-3 ">
+      <div class="col-10 offset-1  borderR" style="border-width:3px !important;background: #ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
         <div class="row">
-          <div style="margin: 50px;" class="col-4 ">
-            <div> 
+          <div style="margin: 30px;" class="col-4 ">
+            <div style="text-align:left;margin-left:40px"> 
               Detail: {{description.descriptionDetail}} <br>
               Color: {{description.productColor}} <br>
               Size : {{description.size}}
-
             </div>
           </div>
         </div>
       </div>
     </div>
+    <br><br><br><br>
   </div>
 </template>
 
@@ -113,6 +102,30 @@ export default {
   mounted() {
       this.getDescription();
       this.getProduct();
-  }
+  },
 };
 </script>
+
+<style>
+.description{
+    font-family: 'Kanit', sans-serif;
+  }
+.borderR{
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+}
+.cutText{
+word-wrap:break-word;
+}
+div.img-resize img {
+  width: auto;
+  height: 360px;
+} 
+
+div.img-resize {
+  width: 360px;
+  height: 360px;
+  overflow: hidden;
+  text-align: center;
+}
+</style>

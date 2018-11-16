@@ -3,8 +3,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="all.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <div class="container-fluid" style="background: #ECEDEF;">
-                <div class="row" style="">
+    <div class="container-fluid" style="background: #EAEAEA">
+                <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
                   <div class="col" style="background: #C44953;">
                     <router-link to="/">
                       <img src="./pic/logo.png" width="145px" height="100px" />
@@ -22,11 +22,14 @@
                   </div>
                   <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 30px; text-align: right;">     
                     <p class="userName" ><img src="./pic/user-avatar-main-picture.png" width="35px" height="35px"/>&nbsp;&nbsp;<b>Prayut</b></p>
-                    <div class="iconMenu">
+                    <div class="iconMenu" style="color:#ffffff;font-family: 'Kanit', sans-serif;">
+                        <b style="background:#1A9F79;border: 1px solid #1A9F79  ;border-radius: 10px;box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, .5);position:absolute;right:118px;top:50px">&nbsp;{{getCartLength}}&nbsp;</b>
                         <router-link to='/cart/cart'>
-                         ({{getCartLength}}) <img src="./pic/shopping-cart.png" width="40px" height="40px"/>
+                         <img src="./pic/shopping-cart.png" width="40px" height="40px"/> 
                         </router-link>
+                        
                         <img src="./pic/notification.png" width="30px" height="30px"/>
+                        
                         <img src="./pic/settings-work-tool.png" width="30px" height="30px"/></div>
                   </div>
                 </div>
@@ -35,6 +38,7 @@
                 </div>
                 <router-view/>
                 
+                
 
         </div>
   </div>
@@ -42,6 +46,7 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import VueRouter from 'vue-router'
 export default {
   computed: {
     ...mapGetters(['getIsCartPage']),
@@ -58,6 +63,8 @@ export default {
       this.notCartPage();
       
   }
+  
+ 
 }
 </script>
 
