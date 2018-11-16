@@ -34,10 +34,10 @@
             </div>
           </div>
           <div class="col">
-            <h1>Nike Repal</h1>
-            <br />
-            เสื้อแจ๊กเก็ตวิ่งผู้หญิง<br />
-            2900 THB <br />
+            <h1>{{product.productName}}</h1><br>
+            
+            {{product.category}}<br>
+            {{product.productPrice}}  บาท<br>
             <br>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,6 +89,7 @@ export default {
   data() {
     return {
         description: {},
+        product: {},
         id: ''
     };
   },
@@ -101,10 +102,17 @@ export default {
       let description = await axios.get('http://localhost:8099/description/'+this.id)
       this.description = description.data
       console.log(this.description)
-    }
+    },
+      getProduct: async function(){
+      let product = await axios.get('http://localhost:8099/product/'+this.id)
+      this.product = product.data
+      console.log(this.product)
+      }
+
   },
   mounted() {
       this.getDescription();
+      this.getProduct();
   }
 };
 </script>

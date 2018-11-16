@@ -12,7 +12,7 @@
               </div>
               <div class="card-body">
                  <h5 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{product.productName}}</h5>
-                 <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">เสื้อแจ็คเก็ตวิ่งผู้หญิง</p>
+                 <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{product.category}}</p>
                  <p class="showPrice"><b>{{product.productPrice}}&nbsp;THB&nbsp;</b>
                  <a class="btn sale btn-sm" href="#" role="button">ซื้อเลย</a>
                  <router-link to="/cart/cart">

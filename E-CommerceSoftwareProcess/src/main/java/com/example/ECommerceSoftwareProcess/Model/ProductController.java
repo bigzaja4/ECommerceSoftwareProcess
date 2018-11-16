@@ -42,10 +42,9 @@ public class ProductController {
     }
     
     @GetMapping("/product/{id}")
-    public List<Product> getOneProduct(@PathVariable int id){
-        List<Product> product = new ArrayList<>();
-        product.add(prodServ.getProductById(id));
-        return product;
+    public Product getOneProduct(@PathVariable int id){
+        
+        return prodServ.getProductById(id);
     }
 
 }
