@@ -46,7 +46,6 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
-import VueRouter from 'vue-router'
 export default {
   computed: {
     ...mapGetters(['getIsCartPage']),
