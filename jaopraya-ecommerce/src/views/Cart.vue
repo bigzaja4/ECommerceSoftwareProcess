@@ -74,7 +74,7 @@
                                     {{item.productPrice}} THB
                                 </td>
                                 <td width=auto style="text-align:center;">
-                                    <button class="btn" type="button" id="deletebutton" >ลบ</button>
+                                    <button class="btn" type="button" id="deletebutton" @click="deleteOneProductFromCart(item)" >ลบ</button>
                                 </td>
                             </tr>
                           </table>
@@ -88,12 +88,12 @@
                                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                  
-                                    <td>รวมราคาสินค้า(6สินค้า)&nbsp;&nbsp;&nbsp;&nbsp;<b> 6,600 </b> THB </td>
+                                    <td>รวมราคาสินค้า(6สินค้า)&nbsp;&nbsp;&nbsp;&nbsp;<b>{{totalPrice}}</b> THB </td>
                                 </tr>
                               </table>
                               <br>
                               <div class="cfmbtn">
-                              <p><button class="btn" type="button" id="confirmbutton" @click="clearIdCart()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ล้างตระกร้าสินค้า</button>&nbsp;
+                              <p><button class="btn" type="button" id="confirmbutton" @click="clearIdCart(),clearProductInCart()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ล้างตระกร้าสินค้า</button>&nbsp;
                               <button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ยืนยันการสั่งซื้อสินค้า</button></p>
                               </div>
                               <br> <br> <br> <br> <br> <br> 
@@ -113,7 +113,8 @@ export default {
     data() {
         return {
             product: [],
-            quantity: 0
+            quantity: 0,
+            totalPrice: 0,
 
         }
     },
@@ -123,14 +124,28 @@ export default {
     },methods: {  
         ...mapActions(['inCartPage']),
         ...mapActions(['clearIdCart']),
+        ...mapActions(['deleteIdFromCart']),
         addItemToCart: async function() {
             let productId = this.getIdCart;
             for(let i=0; i<productId.length; i++){ 
                 let product = await axios.get('http://localhost:8099/product/'+productId[i])
-                this.product.push(product.data);   
+                this.product.push(product.data);
+                this.totalPrice += product.data.productPrice;
             }
             console.log(this.product)
-        }
+        },
+        clearProductInCart: function(){
+            this.product = [];
+            this.totalPrice = 0;
+        },
+        deleteOneProductFromCart: function(product){
+            let index = this.product.indexOf(product);
+            console.log('index: '+index);
+            this.totalPrice -= this.product[index].productPrice;
+            this.product.splice(index,1);
+            this.deleteIdFromCart(index);
+            }
+        
     },
     mounted() {
         this.inCartPage();

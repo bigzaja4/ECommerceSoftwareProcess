@@ -22,6 +22,9 @@ export default new Vuex.Store({
     addIdToCart: (state, productId) => {
       state.cart.push(productId);
     },
+    deleteIdFromCart: (state, index) => {
+      state.cart.splice(index,1);
+    },
     clearIdCart: (state) => {
       state.cart = [];
     }
@@ -43,6 +46,10 @@ export default new Vuex.Store({
     },
     clearIdCart: ({commit}) => {
       commit('clearIdCart')
+    },
+    deleteIdFromCart: ({commit}, index) => {
+      commit('deleteIdFromCart',index)
+      console.log('Delete: '+index)
     }
   },
   getters: {
