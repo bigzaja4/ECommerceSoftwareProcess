@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class="col" style="margin-left:30px">
-            <br><br><br>
-            <h1 style="text-align:left;font-size:30px;width:400px;word-wrap:break-word;margin-top:10px">{{product.productName}}</h1>
+            <br><br>
+            <h1 style="text-align:left;font-size:30px;width:400px;word-wrap:break-word;margin-top:12px">{{product.productName}}</h1>
             
             
             <div class="cutText" style="text-align:left;width:500px;margin-top:-8px">{{product.category}}</div><br>
@@ -128,8 +128,10 @@ export default {
 word-wrap:break-word;
 }
 div.img-resize img {
-  width: auto;
-  height: 360px;
+  width: 360px;
+  height: auto;
+  
+  
 } 
 
 div.img-resize {
@@ -137,5 +139,6 @@ div.img-resize {
   height: 360px;
   overflow: hidden;
   text-align: center;
+  vertical-align:middle;
 }
 </style>
