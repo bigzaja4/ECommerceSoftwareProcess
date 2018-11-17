@@ -44,14 +44,14 @@ public class ProductController {
         return prodServ.getAllProduct();
     }
     
-    @GetMapping("/product/{id}")
+    @GetMapping("/productId/{id}")
     public Product getOneProduct(@PathVariable int id){
         
         return prodServ.getProductById(id);
     }
     
-    @RequestMapping(value = "/cart" , method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE)
-    public  @ResponseBody List<Product> getCart(@RequestBody List<Integer> productId) { 
-        return prodServ.addProductToCart(productId);
+    @GetMapping("/product/{productName}")
+    public List<Product> getProductByName(@PathVariable String productName){
+        return prodServ.getProductByName("%"+productName+"%");
     }
 }

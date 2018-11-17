@@ -103,7 +103,7 @@ export default {
       console.log(this.description)
     },
       getProduct: async function(){
-      let product = await axios.get('http://localhost:8099/product/'+this.id)
+      let product = await axios.get('http://localhost:8099/productId/'+this.id)
       this.product = product.data
       console.log(this.product)
       }

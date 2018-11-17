@@ -31,11 +31,7 @@ public class ProductService {
         return proRep.findById(id).get();
     }
     
-    public List<Product> addProductToCart(List<Integer> productId){
-        List<Product> cart = new ArrayList<>();
-        for (Integer id : productId) {
-            cart.add(getProductById(id));
-        }
-        return cart;
+    public List<Product> getProductByName(String productName){
+        return proRep.findByProductNameLike(productName);
     }
 }
