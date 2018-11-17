@@ -1,19 +1,31 @@
 <template>
-  <div class="container-fluid" style="font-family: 'Kanit', sans-serif;background: #EAEAEA">
-      <div class="row" style="margin-top:-60px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-left:-30px;margin-right:-30px">
-                    <!-- <div class="col" style="background: #6D5F69; padding-left: 35px; padding-top:10px;padding-bottom: 10px ">
-                        <img src="pic/logo.png" width="125px" height="80px"/>
+  <div class="container-fluid" style="font-family: 'Kanit', sans-serif;background: #ECEDEF;">
+       <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-top:-60px;margin-left:-30px;margin-right:-30px" >
+      <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 30px; text-align: right;">     
+                    <p class="userName" style="margin-top:5px;margin-bottom:7px" >
+                        <img src="../pic/notification.png" width="25px" height="25px"/>
+                        <img src="../pic/settings-work-tool.png" width="25px" height="25px"/>&nbsp;
+                  
+                        <img src="../pic/user-avatar-main-picture.png" width="35px" height="35px"/>&nbsp;&nbsp;<b>Prayut</b></p>
+                    </div>
+  </div>
+      <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-left:-30px;margin-right:-30px">
+                     <!-- <div class="col" style="background: #6D5F69; padding-top: 50px;">
+                        <img src="../pic/logo.png" width="125px" height="80px"/>
                       </div> -->
                      
                       <div class="col" style="background: #6D5F69; padding-top: 50px;">
-                          <p class="text1"><img src="../pic/shopping-cart.png" width="70px" height="auto"> &nbsp;| รถเข็น</p>
-                      </div>
-                      <div class="col" style="background: #6D5F69; padding-top: 5px;padding-right: 40px; text-align: right;">      
-                      </div>
+                          <p class="text1" style="float:left;margin-left:230px"> 
+                              <router-link to="/">
+                              <img src="../pic/logo.png" width="125px" height="auto"/>
+                              </router-link>
+                               &nbsp;| รถเข็น</p>
+                      </div> 
+                      
                 </div>
                 <br>
-                <div class="row">
-                        <div class="col" style="background: #ECEDEF; padding-right: 15px">
+                <div class="row" style="padding-bottom:218px">
+                        <div class="col" style=" padding-right: 15px">
                             <p style="margin-bottom:-24px;color:#8D8E8D">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 รายการทั้งหมด &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -95,6 +107,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";  
+
 axios.defaults.withCredentials = true;
 export default {
     data() {

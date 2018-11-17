@@ -3,15 +3,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="all.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <div class="container-fluid" style="background: #EAEAEA">
-                <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
+    <div class="container-fluid" style="background: #ECEDEF;" >
+                <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);" v-show="getIsCartPage">
                   <div class="col" style="background: #C44953;">
                     <router-link to="/">
                       <img src="./pic/logo.png" width="145px" height="100px" />
                     </router-link>
                   </div>
                   <div class="col-6" style="background: #C44953; padding-top: 50px;text-align: left;">
-                        <div class="input-group mb-3" v-show="getIsCartPage">
+                        <div class="input-group mb-3" >
                                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" v-model="searchKeyword">
                                 <div class="input-group-append">
                                   <router-link :to="`/${searchKeyword}`">

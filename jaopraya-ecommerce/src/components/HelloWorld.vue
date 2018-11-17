@@ -12,7 +12,7 @@
               </div>
               <div class="card-body" style="margin-bottom:-17px">
                  <h5 class="card-title" style="margin-top:1px;font-size:18px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><b>{{product.productName}}</b></h5>
-                 <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color:#535352">fghtht{{product.category}}</p>
+                 <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color:#535352">{{product.category}}</p>
                  <p style="margin-bottom:-5px;"><p style="font-size:6px;color:#C44953;margin-left:-1px;"><b style="font-size:19px;color:#C44953">{{product.productPrice}}</b>&nbsp;THB&nbsp;
                  <a class="btn btn-sm" href="#" role="button" style="background:#C44953;margin-right:3px">ซื้อเลย</a>
                  <button @click="addIdToCart(product.productId)" class="btn btn-sm">
