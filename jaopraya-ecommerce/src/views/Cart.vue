@@ -88,7 +88,7 @@
                                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                  
-                                    <td>รวมราคาสินค้า(6สินค้า)&nbsp;&nbsp;&nbsp;&nbsp;<b>{{totalPrice}}</b> THB </td>
+                                    <td>รวมราคาสินค้า({{product.length}}สินค้า)&nbsp;&nbsp;&nbsp;&nbsp;<b>{{totalPrice}}</b> THB </td>
                                 </tr>
                               </table>
                               <br>
@@ -128,7 +128,7 @@ export default {
         addItemToCart: async function() {
             let productId = this.getIdCart;
             for(let i=0; i<productId.length; i++){ 
-                let product = await axios.get('http://localhost:8099/product/'+productId[i])
+                let product = await axios.get('http://localhost:8099/productId/'+productId[i])
                 this.product.push(product.data);
                 this.totalPrice += product.data.productPrice;
             }
