@@ -94,11 +94,11 @@
                               <br>
                               <div class="cfmbtn">
                               <p><button class="btn" type="button" id="confirmbutton" @click="clearIdCart(),clearProductInCart()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ล้างตระกร้าสินค้า</button>&nbsp;
-                              <button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ยืนยันการสั่งซื้อสินค้า</button></p>
+                                
+                                    <button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> <router-link to="/cart/payment" >ยืนยันการสั่งซื้อสินค้า </router-link>  </button></p>                               
+                                
                               </div>
                               <br> <br> <br> <br> <br> <br> 
-
-
                     </div>
                 </div>
   </div>
