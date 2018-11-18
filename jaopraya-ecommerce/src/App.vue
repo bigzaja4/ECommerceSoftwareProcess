@@ -10,7 +10,7 @@
                       <img src="./pic/logo.png" width="145px" height="100px" />
                     </router-link>
                   </div>
-                  <div class="col-6" style="background: #C44953; padding-top: 50px;text-align: left;">
+                  <div class="col-4" style="background: #C44953; padding-top: 50px;text-align: left;">
                         <div class="input-group mb-3" >
                                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" v-model="searchKeyword">
                                 <div class="input-group-append">
@@ -21,18 +21,38 @@
                               </div>
                   </div>
                   <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 30px; text-align: right;">     
-                    <p class="userName" ><img src="./pic/user-avatar-main-picture.png" width="35px" height="35px"/>&nbsp;&nbsp;<b>Prayut</b></p>
-                    <div class="iconMenu" style="color:#ffffff;font-family: 'Kanit', sans-serif;">
-                        <b style="background:#1A9F79;border: 1px solid #1A9F79  ;border-radius: 10px;box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, .5);position:absolute;right:118px;top:50px">&nbsp;{{getCartLength}}&nbsp;</b>
+                     <div style="font-family: 'Kanit', sans-serif;">
+                       <b  v-if="!isConnected" style="font-size:15px;color:#ffffff">WELCOME  &nbsp;|</b>
+                       <b  v-if="isConnected" style="font-size:15px;color:#ffffff">{{name}}  &nbsp;|</b>
+                     <facebook-login class="btn"
+                          appId="266604957536014"
+                          @login="onLogin"
+                          @logout="onLogout"
+                          @sdk-loaded="sdkLoaded" style="width:200px;margin-right:36px">
+                     </facebook-login> 
+                      
+                     </div>
+                     <!-- <div v-if="!isConnected"
+                          class="information">
+                          
+                     </div> -->
+                     <!-- <div v-if="isConnected"
+                          class="information">
+                          <h1>Login success</h1>
+                     </div> -->
+                      
+                    <div class="iconMenu" style="color:#ffffff;font-family: 'Kanit', sans-serif;margin-top:1px">
+                        <b style="background:#1A9F79;border: 1px solid #1A9F79  ;border-radius: 10px;box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, .5);position:absolute;right:122px;top:50px">&nbsp;{{getCartLength}}&nbsp;</b>
                         <router-link to='/cart/cart'>
                          <img src="./pic/shopping-cart.png" width="40px" height="40px"/> 
                         </router-link>
                         
                         <img src="./pic/notification.png" width="30px" height="30px"/>
                         
-                        <img src="./pic/settings-work-tool.png" width="30px" height="30px"/></div>
+                        <img src="./pic/settings-work-tool.png" width="30px" height="30px"/>&nbsp;</div>
                   </div>
                 </div>
+                
                 <div id="nav">
                   <!-- <router-link to="/about">About</router-link> -->
                 </div>
@@ -45,23 +65,55 @@
 </template>
 
 <script>
+import facebookLogin from 'facebook-login-vuejs'
 import {mapGetters, mapActions} from 'vuex'
 export default {
+  components:{
+     facebookLogin
+  },
   computed: {
     ...mapGetters(['getIsCartPage']),
     ...mapGetters(['getCartLength'])
   },methods: {  
-    ...mapActions(['notCartPage'])
+    ...mapActions(['notCartPage']),
+    getUserData() {
+      this.FB.api('/me', 'GET', { fields: 'id,name,email' },
+        userInformation => {
+          this.personalID = userInformation.id;
+          this.email = userInformation.email;
+          this.name = userInformation.name;
+        }
+      )
+    },
+    sdkLoaded(payload) {
+      this.isConnected = payload.isConnected
+      this.FB = payload.FB
+      if (this.isConnected) this.getUserData()
+    },
+    onLogin() {
+      this.isConnected = true
+      this.getUserData()
+    },
+    onLogout() {
+      this.isConnected = false;
+    }
+  
   },
   data() {
     return{
       searchKeyword: '',
+      isConnected: false,
+      name: '',
+      email: '',
+      personalID: '',
+      FB: undefined
     }
   },
   mounted() {
       this.notCartPage();
       
   }
+  
   
  
 }
@@ -118,6 +170,12 @@ export default {
 .showPrice{
     color: #C44953;
     font-size: 18px; 
+}
+.information {
+  margin-top: 100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 </style>
