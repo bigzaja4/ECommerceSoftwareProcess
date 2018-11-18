@@ -14,7 +14,9 @@
                  <h5 class="card-title" style="margin-top:1px;font-size:18px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><b>{{product.productName}}</b></h5>
                  <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color:#535352">{{product.category}}</p>
                  <p style="margin-bottom:-5px;"><p style="font-size:6px;color:#C44953;margin-left:-1px;"><b style="font-size:19px;color:#C44953">{{product.productPrice}}</b>&nbsp;THB&nbsp;
-                 <a class="btn btn-sm" href="#" role="button" style="background:#C44953;margin-right:3px">ซื้อเลย</a>
+                 <router-link to="/cart/cart" >
+                 <button  @click="addIdToCart(product.productId)" type="button" class="btn btn-sm" href="#" style="background:#C44953;margin-right:3px;color:#ffffff">ซื้อเลย</button>
+                 </router-link>
                  <button @click="addIdToCart(product.productId)" class="btn btn-sm">
                     <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-right:3px;margin:1px">
                  </button>

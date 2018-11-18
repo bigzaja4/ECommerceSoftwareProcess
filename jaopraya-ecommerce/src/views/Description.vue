@@ -1,7 +1,7 @@
 <template>
     <div class="description">  
       <div  class="row px-3 " style="margin-top:-30px">
-        <h3 style="margin-left:150px;font-size:18px;color:#8D8E8D;margin-bottom:5px">ข้อมูลสินค้า</h3> 
+        <h3 style="margin-left:11.5%;font-size:18px;color:#8D8E8D;margin-bottom:5px">ข้อมูลสินค้า</h3> 
       </div>
     <div  class="row px-3 ">
       <div class="col-10 offset-1 borderR " style="border-width:3px !important;background: #ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
@@ -44,8 +44,10 @@
         
             <br>
             <br>
-            <button type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>&nbsp;
-            <button type="button" class="btn btn-danger">ซื้อสินค้า</button>
+            <button @click="addIdToCart(product.productId)" type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>&nbsp;
+            <router-link to="/cart/cart" >
+            <button @click="addIdToCart(product.productId)" type="button" class="btn btn-danger">ซื้อสินค้า</button>
+             </router-link>
             </div>
           </div>
         </div>
@@ -54,7 +56,7 @@
 
     <br>
     <!-- ----------------------------------------------- -->
-    <h3 style="text-align:left;margin-left:150px;font-size:18px;color:#8D8E8D;margin-bottom:5px">รายละเอียดสินค้าเพิ่มเติม</h3>
+    <h3 style="text-align:left;margin-left:11.5%;font-size:18px;color:#8D8E8D;margin-bottom:5px">รายละเอียดสินค้าเพิ่มเติม</h3>
     
     <div class="row px-3 ">
       <div class="col-10 offset-1  borderR" style="border-width:3px !important;background: #ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
@@ -82,6 +84,7 @@
 </template>
 
 <script>
+import {mapGetters,mapActions} from 'vuex'
 import axios from "axios";  
 axios.defaults.withCredentials = false; 
 export default {
@@ -93,10 +96,15 @@ export default {
     };
   },
   props: {
-    id: ''
+    id: '',
+    product: {}
+  },
+  computed: {
+    ...mapGetters(['getCart'])
   },
   name: "Description",
   methods: {
+      ...mapActions(['addIdToCart']),
       getDescription: async function() {
       let description = await axios.get('http://localhost:8099/description/'+this.id)
       this.description = description.data
@@ -126,6 +134,7 @@ export default {
 }
 .cutText{
 word-wrap:break-word;
+
 }
 div.img-resize img {
   width: 360px;

@@ -23,33 +23,19 @@
                       </div> 
                       
                 </div>
+                <!-- ----------------------------------header------------------------------------ -->
                 <br>
-                <div class="row" style="padding-bottom:218px">
-                        <div class="col" style=" padding-right: 15px">
-                            <p style="margin-bottom:-24px;color:#8D8E8D">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                รายการทั้งหมด &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
-                            ราคาต่อชิ้น&nbsp;&nbsp;&nbsp;&nbsp; 
-                            จำนวน&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                            ราคารวม&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; 
-                            แอคชั่น</p>
-                            <table width=70% class="" cellpadding="10" >
-                              <!-- <tr >
-                                  <td><b style="margin-left:80px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รายการสินค้าทั้งหมด
-                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-                                  <td>ราคาต่อชิ้น</td>
-                                  <td>จำนวน</td>
-                                  <td>ราคารวม</td>
-                                  <td>แอคชั่น</td>
-                                  
-                              </tr> -->
-
-                            </table>
+                <div class="row" style="color:#8D8E8D">
+                        <div class="col" style=" ">
+                            <div class="row" style="color:#8D8E8D;text-align:center;margin-bottom:-28px;margin-top:10px">
+                      <div class="col-sm-6" style="text-align:center;margin-top:-3px">รายการทั้งหมด</div>
+                      <div class="col-sm-1.5" style="margin-top:-3px">ราคาต่อชิ้น</div>
+                      <div class="col-sm-1" style="margin-top:-3px"> จำนวน</div>
+                      <div class="col-sm-1" style="margin-top:-3px">ราคารวม</div>
+                      <div class="col-sm-1" style="margin-top:-3px">แอคชั่น</div>
+                  </div> 
+                           
+                            
                         <div v-for="item in product" :key="item">
                           <table width=70% class="textbox" cellpadding="10" style="margin-bottom:-20px">
                             <tr>
@@ -94,11 +80,11 @@
                               <br>
                               <div class="cfmbtn">
                               <p><button class="btn" type="button" id="confirmbutton" @click="clearIdCart(),clearProductInCart()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ล้างตระกร้าสินค้า</button>&nbsp;
-                                
-                                    <button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> <router-link to="/cart/payment" >ยืนยันการสั่งซื้อสินค้า </router-link>  </button></p>                               
+                                    <router-link to="/cart/payment" ><button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
+                                        ยืนยันการสั่งซื้อสินค้า  </button></router-link></p>                               
                                 
                               </div>
-                              <br> <br> <br> <br> <br> <br> 
+                              <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br> <br>  <br> <br> <br> 
                     </div>
                 </div>
   </div>
@@ -177,7 +163,7 @@ export default {
     /* width: 200px;
   margin: 0 auto;  */
   float: right;
-  margin-right:210px 
+  margin-right:18.4%
   
 }
 div.img-resize img {

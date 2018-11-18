@@ -1,5 +1,5 @@
 <template>
-  <div id="23">
+  <div id="23" class="container-fluid" style="font-family: 'Kanit', sans-serif;background: #ECEDEF;">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="all.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
@@ -27,26 +27,28 @@
                       </div> 
                       
                 </div>
-                <br>            
+                <br>  
+
+                <!-- -----------------------header--------------------------------           -->
     <div class="row">
         <div class="col" style="background: #ECEDEF; padding-right: 15px">
-              <div class="address"><br>
-                  <p id="add">ที่อยู่จัดส่ง</p>
+              <div class="address"><br><br>
+                  <p id="add" style="color:#8D8E8D;float:left;margin-top:-29px;margin-left:14%" >ที่อยู่จัดส่ง</p>
                   <div class="border-row">
-                      <div id="box-address">
-                          <p>3/21 โครงการ the cube (ประชาอุทิศ) อาคารB ชั้น3 ซ.ประชาอุทิศ37 <br> 
+                      <div id="box-address" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
+                          <p style="width:700px;word-wrap:break-word;text-align:left">3/21 โครงการ the cube (ประชาอุทิศ) อาคารB ชั้น3 ซ.ประชาอุทิศ37 <br> 
                                       แขวงราษฎร์บูรณะ เขตราษฎร์บูรณะ กรุงเทพมหานคร 10140</p>
                       </div>
                   </div>
                   <br>
                               
-                  <div class="row">
-                      <div class="col-sm-8">รายการสินค้า</div>
-                      <div class="col-sm-1.5">ราคาต่อหน่วย</div>
-                      <div class="col-sm-1">จำนวน</div>
-                      <div class="col-sm-1">ราคารวม</div>
+                  <div class="row" style="margin-left:-0.5%;color:#8D8E8D;">
+                      <div class="col-sm-8" style="text-align:left;margin-left:14%;margin-right:-180px;margin-top:-3px">รายการสินค้า</div>
+                      <div class="col-sm-1.5" style="margin-top:-3px">ราคาต่อชิ้น</div>
+                      <div class="col-sm-1" style="margin-top:-3px">จำนวน</div>
+                      <div class="col-sm-1" style="margin-top:-3px">ราคารวม</div>
                   </div> 
-                  <div class="content-row">
+                  <div class="content-row" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
                       <table style="width:100%" >
                                             <tr>
                                               <td></td>
@@ -62,14 +64,21 @@
                                               </tr>
                                         </table>
                                   <div class="total-row">
-                                      <span class="text-total">
-                                      <p>ราคาสินค้ารวม </p>
-                                      <p>ค่าจัดส่ง</p>
-                                      <p>รวมทั้งหมด </p>
+                                      <hr>
+                                      <span class="text-total" style="">
+                                      <p style="text-align;right">ราคาสินค้ารวม </p>
+                                      <p style="margin-top:-18px;text-align;right">ค่าจัดส่ง</p>
+                                      <p style="margin-top:-10px;text-align;right">รวมทั้งหมด </p>
                                     </span>
                                   </div>
                    </div>
-               </div><br>
+               </div>
+               <br>
+               <div style="float:right;margin-right:11.5%">
+                <router-link to="/cart/Order" ><button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
+                  สั่งซื้อสินค้า  </button></router-link> 
+               </div>
+              <br><br><br><br>
             </div>
         </div>
   </div>
@@ -134,7 +143,7 @@ export default {
   height: 350px;
   font-weight: 500px;
   border: 3px;
-  border-color: #c44953;
+  border-color: #ECEDEF;;
   border-style: solid;
 }
 h1 {
@@ -167,14 +176,23 @@ p {
 }
 
 .total-row {
-  border-top: 3px solid #c44953;
+  /* border-top: 3px solid #ECEDEF;; */
   height: 80px;
   margin-top: 210px;
 }
 
-.text-total {
+/* .text-total {
   position: absolute;
   right: 300px;
   margin-top: 10px;
+} */
+.textbox{
+    border-width:3px !important;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);
+    margin-left:180px;
+    margin-top: 30px;
+
 }
 </style>

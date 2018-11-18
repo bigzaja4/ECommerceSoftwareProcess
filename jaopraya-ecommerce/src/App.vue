@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     ...mapGetters(['getIsCartPage']),
-    ...mapGetters(['getCartLength'])
+    ...mapGetters(['getCartLength']),
   },methods: {  
     ...mapActions(['notCartPage']),
     getUserData() {
@@ -82,6 +82,7 @@ export default {
           this.personalID = userInformation.id;
           this.email = userInformation.email;
           this.name = userInformation.name;
+          
         }
       )
     },
@@ -106,6 +107,7 @@ export default {
       name: '',
       email: '',
       personalID: '',
+      pic: '',
       FB: undefined
     }
   },
