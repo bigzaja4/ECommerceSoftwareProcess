@@ -5,6 +5,7 @@
  */
 package com.example.ECommerceSoftwareProcess.Model;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,14 @@ public class OrderProductService {
     
     public OrderProduct insertOrderProduct(OrderProduct Order){
         return orderRep.save(Order);
+    }
+    
+    public List<OrderProduct> getAllOrderProduct(){
+        return orderRep.findAll();
+    }
+          
+    public OrderProduct getById(int id){
+        return orderRep.findById(id).get();
     }
     
 }
