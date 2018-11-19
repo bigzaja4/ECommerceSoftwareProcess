@@ -69,29 +69,6 @@
                             </tr>
                           </table>
 
-                <!-- ---------------------------------------ช่องสินค้า no2 ----------------------------------------       -->
-                          <table width=70% class="textbox" cellpadding="10" style="margin-bottom:-20px">
-                              
-                            <tr>
-                              <td style="width:20%">
-                                <div  class="img-resize" style="border: 2px solid #959595  ;border-radius: 10px;float:right">
-                                  <img src="pic/nike.png" />
-                                  <!-- <img :src="`${item.picture}`"  /> -->
-                                  </div>
-                                </td>
-                              <td style="width:46%;text-align:left;">
-                                NIKE Epic La<br>
-                                กางเกงวิ่งรัดรูปผู้หญิง
-                                </td>
-                                <td style="width:13%">
-                                  1 ชิ้น
-                                </td>
-                                <td style="width:auto">
-                                  3,700 THB
-                                </td>
-                            </tr>
-                          </table>
-
                             <!-- ---------------------------------- ปุ่มนานาชนิด -------------------------------------------- -->
                             <div class="cfmbtn">
                               <table>

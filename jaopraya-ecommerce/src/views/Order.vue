@@ -75,8 +75,9 @@
                </div>
                <br>
                <div style="float:right;margin-right:11.5%">
-                <router-link to="/cart/Order" ><button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
-                  สั่งซื้อสินค้า  </button></router-link> 
+               <button class="btn" @click="payCard()" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
+                  สั่งซื้อสินค้า  
+                </button>
                </div>
               <br><br><br><br>
             </div>
@@ -87,6 +88,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";  
+axios.defaults.withCredentials = true;
 
 axios.defaults.withCredentials = true;
 export default {
@@ -103,11 +105,36 @@ export default {
         ...mapGetters(['getIdCart'])
     },methods: {  
         ...mapActions(['inCartPage']),
-        ...mapActions(['notCartPage'])
+        ...mapActions(['notCartPage']),
+        payCard: async function(){
+          OmiseCard.open({
+            frameLabel: 'Esimo',
+            frameDescription: 'Invoice #3847',
+            amount: 12345,
+            onCreateTokenSuccess: (token) => {
+              /* Your code, e.g., submit form or send ajax request to server */
+              axios({
+                method: 'post',
+                url: 'http://localhost:5000/Payment',
+                data: {
+                  token: token,
+                  totalPrice: 12345
+                }
+              }).then(rest=>console.log(rest))
+            },
+            onFormClosed: () => {
+              /* Your handler when form was closed */
+            },
+          })
+        }
         
     },
     mounted() {
         this.inCartPage();
+        OmiseCard.configure({
+          publicKey: 'pkey_test_5dz2dxgy2mdrk7e7zhx',
+          amount: 99500
+        });
     }   
 }
 </script>      
