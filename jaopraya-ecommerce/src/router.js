@@ -46,11 +46,7 @@ export default new Router({
       name: 'payment',
       component: () => import('./views/OrderDetail.vue')
     },
-    {
-      path: '/cart/login',
-      name: 'login',
-      component: () => import('./views/login.vue')
-    }
+   
 
   ]
 })
