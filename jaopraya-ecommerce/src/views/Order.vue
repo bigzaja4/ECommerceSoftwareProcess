@@ -44,16 +44,17 @@
                       <div class="col-sm-1" style="margin-top:-3px">จำนวน</div>
                       <div class="col-sm-1" style="margin-top:-3px">ราคารวม</div>
                   </div> 
-                  <div class="content-row" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
+                  <div class="row" style="width:76.5%;margin-left:12%;border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
                       <table style="width:100%" >
-                                            <tr v-for="item in product" :key="item">
-                                                <td><img :src="`${item.picture}`" ></td>
-                                                <td>{{item.productName}}</td>
-                                                <td>1</td>
-                                                <td>{{item.productPrice}}</td>
+                                            <tr v-for="item in product" :key="item" >
+                                                <td style="width:13%;margin:2px"><div class="img-resize" style="float:right;border-radius: 6px;border:1px solid"><img :src="`${item.picture}`" >&nbsp;&nbsp;&nbsp;</div></td>
+                                                <td style="width:52%;text-align:left;">&nbsp;&nbsp;{{item.productName}}</td>
+                                                <td style="width:13%;">1</td>
+                                                <td style="width:13p%;">1</td>
+                                                <td style="width:auto;">{{item.productPrice}}</td>
                                               </tr>
                                         </table>
-                                  <div class="total-row">
+                                  <div class="" style="">
                                       <hr>
                                       <span class="text-total" style="">
                                       <p style="text-align;right">ราคาสินค้ารวม {{this.getTotalPrice}}</p> 
@@ -205,8 +206,8 @@ p {
 
 .total-row {
   /* border-top: 3px solid #ECEDEF;; */
-  height: 80px;
-  margin-top: 210px;
+  /* height: 80px;
+  margin-top: 210px; */
 }
 
 /* .text-total {
@@ -222,5 +223,16 @@ p {
     margin-left:180px;
     margin-top: 30px;
 
+}
+div.img-resize img {
+  width: 80px;
+  height:auto;
+} 
+
+div.img-resize {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  text-align: center;
 }
 </style>
