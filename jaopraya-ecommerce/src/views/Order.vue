@@ -33,8 +33,7 @@
                   <p id="add" style="color:#8D8E8D;float:left;margin-top:-29px;margin-left:14%" >ที่อยู่จัดส่ง</p>
                   <div class="border-row">
                       <div id="box-address" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
-                          <p style="width:700px;word-wrap:break-word;text-align:left">3/21 โครงการ the cube (ประชาอุทิศ) อาคารB ชั้น3 ซ.ประชาอุทิศ37 <br> 
-                                      แขวงราษฎร์บูรณะ เขตราษฎร์บูรณะ กรุงเทพมหานคร 10140</p>
+                          <input type="text" style="width:700px;word-wrap:break-word;text-align:left">
                       </div>
                   </div>
                   <br>
