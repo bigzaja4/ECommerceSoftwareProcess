@@ -114,7 +114,7 @@ export default {
         addItemToCart: async function() {
             let productId = this.getIdCart;
             for(let i=0; i<productId.length; i++){ 
-                let product = await axios.get('http://localhost:8099/productId/'+productId[i])
+                let product = await axios.get('http://localhost:5000/productId/'+productId[i])
                 this.product.push(product.data);
                 this.totalPrice += product.data.productPrice;
             }

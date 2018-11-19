@@ -106,12 +106,12 @@ export default {
   methods: {
       ...mapActions(['addIdToCart']),
       getDescription: async function() {
-      let description = await axios.get('http://localhost:8099/description/'+this.id)
+      let description = await axios.get('http://localhost:5000/description/'+this.id)
       this.description = description.data
       console.log(this.description)
     },
       getProduct: async function(){
-      let product = await axios.get('http://localhost:8099/productId/'+this.id)
+      let product = await axios.get('http://localhost:5000/productId/'+this.id)
       this.product = product.data
       console.log(this.product)
       }
