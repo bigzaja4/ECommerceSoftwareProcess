@@ -30,23 +30,33 @@
                           @logout="onLogout"
                           @sdk-loaded="sdkLoaded" style="width:200px;margin-right:36px">
                      </facebook-login> 
+                    
                       
                      </div>
-                     <!-- <div v-if="!isConnected"
-                          class="information">
-                          
-                     </div> -->
-                     <!-- <div v-if="isConnected"
-                          class="information">
-                          <h1>Login success</h1>
-                     </div> -->
+                    
                       
                     <div class="iconMenu" style="color:#ffffff;font-family: 'Kanit', sans-serif;margin-top:1px">
-                        <b style="background:#1A9F79;border: 1px solid #1A9F79  ;border-radius: 10px;box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, .5);position:absolute;right:122px;top:50px">&nbsp;{{getCartLength}}&nbsp;</b>
-                        <router-link to='/cart/cart'>
+                        <b style="background:#1A9F79;border: 1px solid #1A9F79  ;border-radius: 10px;box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, .5);position:absolute;right:122px;top:50px;">&nbsp;{{getCartLength}}&nbsp;</b>
+                        
+                        
+                        
+                        <router-link to='/cart/cart' v-if="isConnected">
                          <img src="./pic/shopping-cart.png" width="40px" height="40px"/> 
                         </router-link>
                         
+                        
+                       
+                         <img src="./pic/shopping-cart.png" width="40px" height="40px" v-if="!isConnected"  @click="getAlert(true)" /> 
+                          <div class="card" style="position:absolute;z-index:2;margin:50px;left:-80%;right:auto;top:185px;background:#ffffff;border:3px solid #EE8981;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);border-radius: 10px;" v-if="alert" >
+                            <p style="color:#000000;margin:50px;text-align:center;color:#EE8981;font-size:25px">
+                              
+                            <button class="btn" style="float:right;font-size:20px;color:#EE8981;margin-top:-43px;margin-right:-27px;background:#ffffff;" @click="getAlert(false)"><b>X</b></button>  
+                              
+                            <img src="./pic/exclamation-mark.png" width="150px" height="150px"/> <br><br>
+                            <b>ล็อกอินก่อนดิสัส</b></p>
+                        </div>  
+                         
+                         
                         <img src="./pic/notification.png" width="30px" height="30px"/>
                         
                         <img src="./pic/settings-work-tool.png" width="30px" height="30px"/>&nbsp;</div>
@@ -56,7 +66,8 @@
                 <div id="nav">
                   <!-- <router-link to="/about">About</router-link> -->
                 </div>
-                <router-view/>
+                
+                <router-view />
                 
                 
 
@@ -97,7 +108,12 @@ export default {
     },
     onLogout() {
       this.isConnected = false;
+    },
+    getAlert(p) {
+      this.alert = p;
     }
+  
+  
   
   },
   data() {
@@ -108,14 +124,14 @@ export default {
       email: '',
       personalID: '',
       pic: '',
-      FB: undefined
+      FB: undefined,
+      alert: false
     }
   },
   mounted() {
       this.notCartPage();
       
-  }
-  
+  },
   
  
 }
