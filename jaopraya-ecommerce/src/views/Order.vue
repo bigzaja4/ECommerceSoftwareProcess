@@ -14,9 +14,6 @@
                     </div>
     </div>    
     <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-left:-30px;margin-right:-30px">
-                     <!-- <div class="col" style="background: #6D5F69; padding-top: 50px;">
-                        <img src="../pic/logo.png" width="125px" height="80px"/>
-                      </div> -->
                      
                       <div class="col" style="background: #6D5F69; padding-top: 50px;">
                           <p class="text1" style="float:left;margin-left:230px"> 
@@ -41,7 +38,6 @@
                       </div>
                   </div>
                   <br>
-                              
                   <div class="row" style="margin-left:-0.5%;color:#8D8E8D;">
                       <div class="col-sm-8" style="text-align:left;margin-left:14%;margin-right:-180px;margin-top:-3px">รายการสินค้า</div>
                       <div class="col-sm-1.5" style="margin-top:-3px">ราคาต่อชิ้น</div>
@@ -50,25 +46,19 @@
                   </div> 
                   <div class="content-row" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
                       <table style="width:100%" >
-                                            <tr>
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                            <tr v-for="item in product" :key="item">
+                                                <td><img :src="`${item.picture}`" ></td>
+                                                <td>{{item.productName}}</td>
+                                                <td>1</td>
+                                                <td>{{item.productPrice}}</td>
                                               </tr>
                                         </table>
                                   <div class="total-row">
                                       <hr>
                                       <span class="text-total" style="">
-                                      <p style="text-align;right">ราคาสินค้ารวม </p>
-                                      <p style="margin-top:-18px;text-align;right">ค่าจัดส่ง</p>
-                                      <p style="margin-top:-10px;text-align;right">รวมทั้งหมด </p>
+                                      <p style="text-align;right">ราคาสินค้ารวม {{this.getTotalPrice}}</p> 
+                                      <p style="margin-top:-18px;text-align;right">ค่าจัดส่ง 0 THB</p>
+                                      <p style="margin-top:-10px;text-align;right">รวมทั้งหมด {{this.getTotalPrice}} THB</p>
                                     </span>
                                   </div>
                    </div>
@@ -95,14 +85,14 @@ export default {
     data() {
         return {
             product: [],
-            quantity: 0,
             totalPrice: 0,
 
         }
     },
     computed: {
         ...mapGetters(['getIsCartPage']),
-        ...mapGetters(['getIdCart'])
+        ...mapGetters(['getIdCart']),
+        ...mapGetters(['getTotalPrice']),
     },methods: {  
         ...mapActions(['inCartPage']),
         ...mapActions(['notCartPage']),
@@ -110,7 +100,7 @@ export default {
           OmiseCard.open({
             frameLabel: 'Esimo',
             frameDescription: 'Invoice #3847',
-            amount: 12345,
+            amount: this.getTotalPrice*100,
             onCreateTokenSuccess: (token) => {
               /* Your code, e.g., submit form or send ajax request to server */
               axios({
@@ -126,14 +116,25 @@ export default {
               /* Your handler when form was closed */
             },
           })
+        },
+        addItemToCart: async function() {
+            let productId = this.getIdCart;
+            for(let i=0; i<productId.length; i++){ 
+                let product = await axios.get('http://localhost:5000/productId/'+productId[i])
+                this.product.push(product.data);
+                this.totalPrice += product.data.productPrice;
+            }
+            console.log(this.product)
         }
         
     },
     mounted() {
+        console.log("total: "+this.getTotalPrice)
         this.inCartPage();
+        this.addItemToCart();
         OmiseCard.configure({
           publicKey: 'pkey_test_5dz2dxgy2mdrk7e7zhx',
-          amount: 99500
+          amount: this.getTotalPrice
         });
     }   
 }

@@ -5,14 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0,
     isCartPage: true,
-    cart: []
+    cart: [],
+    totalPrice: 0
   },
   mutations: {
-    addCount: (state, amount) => {
-      state.count += amount
-    },
     inCartPage: (state) => {
       state.isCartPage = false;
     },
@@ -27,12 +24,21 @@ export default new Vuex.Store({
     },
     clearIdCart: (state) => {
       state.cart = [];
+    },
+    setTotalPrice: (state,totalPrice) => {
+      state.totalPrice = totalPrice;
+    },
+    resetTotalPrice: (state) => {
+      state.totalPrice = 0;
     }
     
   },
   actions: {
-    addCount: ({ commit },amount) => {
-      commit('addCount',amount)
+    setTotalPrice: ({commit},totalPrice) => {
+      commit('setTotalPrice',totalPrice)
+    },
+    resetTotalPrice: ({commit}) => {
+      commit('resetTotalPrice');
     },
     inCartPage: ({commit}) => {
       commit('inCartPage')
@@ -53,9 +59,6 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getCount: (state) => {
-       return state.count
-    },
     getIsCartPage: state => {
       return state.isCartPage
     },
@@ -64,6 +67,9 @@ export default new Vuex.Store({
     },
     getCartLength: state => {
       return state.cart.length
+    },
+    getTotalPrice: state => {
+      return state.totalPrice;
     }
   }
 })

@@ -51,10 +51,7 @@
                                   {{item.productPrice}} THB
                                 </td>
                                 <td width=80px style="text-align:center;">
-                                  
                                         1
-                                      <!-- <input type="number" style="width: 50px" v-model="quantity"> -->
-                                    
                                 </td>
                                 <td width=100px style="text-align:center;">
                                     {{item.productPrice}} THB
@@ -80,8 +77,13 @@
                               <br>
                               <div class="cfmbtn">
                               <p><button class="btn" type="button" id="confirmbutton" @click="clearIdCart(),clearProductInCart()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">ล้างตระกร้าสินค้า</button>&nbsp;
-                                    <router-link to="/cart/payment" ><button class="btn" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
-                                        ยืนยันการสั่งซื้อสินค้า  </button></router-link></p>                               
+                                    <router-link to="/cart/payment" >
+                                        <button class="btn" type="button" id="confirmbutton"  style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
+                                            ยืนยันการสั่งซื้อสินค้า  
+                                        </button>
+                                    </router-link>
+                                    
+                                </p>                               
                                 
                               </div>
                               <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br> <br>  <br> <br> <br> 
@@ -107,7 +109,8 @@ export default {
     computed: {
         ...mapGetters(['getIsCartPage']),
         ...mapGetters(['getIdCart'])
-    },methods: {  
+    },methods: { 
+        ...mapActions(['setTotalPrice']),
         ...mapActions(['inCartPage']),
         ...mapActions(['clearIdCart']),
         ...mapActions(['deleteIdFromCart']),
@@ -118,22 +121,27 @@ export default {
                 this.product.push(product.data);
                 this.totalPrice += product.data.productPrice;
             }
+            this.setTotalPrice(this.totalPrice);
             console.log(this.product)
         },
         clearProductInCart: function(){
             this.product = [];
             this.totalPrice = 0;
+            this.setTotalPrice(this.totalPrice);
         },
         deleteOneProductFromCart: function(product){
             let index = this.product.indexOf(product);
             console.log('index: '+index);
             this.totalPrice -= this.product[index].productPrice;
+            this.setTotalPrice(this.totalPrice);
             this.product.splice(index,1);
             this.deleteIdFromCart(index);
+
             }
         
     },
     mounted() {
+
         this.inCartPage();
         this.addItemToCart();
     }   
