@@ -12,15 +12,44 @@
               </div>
               <div class="card-body" style="margin-bottom:-17px">
                  <h5 class="card-title" style="margin-top:1px;font-size:18px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><b>{{product.productName}}</b></h5>
-                 <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color:#535352">{{product.category}}</p>
-                 <p style="margin-bottom:-5px;"><p style="font-size:6px;color:#C44953;margin-left:-1px;"><b style="font-size:19px;color:#C44953">{{product.productPrice}}</b>&nbsp;THB&nbsp;
-                 <router-link to="/cart/cart" >
+                 <p class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color:#535352;">{{product.category}}</p>
+                 <p style="margin-bottom:-5px;"><p style="font-size:6px;color:#C44953;margin-left:-1px;"><b style="font-size:19px;color:#C44953;">{{product.productPrice}}&nbsp;THB&nbsp;</b></p>
+                 <!-- -------------------------------------- -->
+                 <div class="row" style="float:right;margin-top:-10px;margin-bottom:11px;margin-right:17px">
+                 <div class="btn-group dropup" style="margin-right:2px">
+                      <button type="button " class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ขนาด
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item">ไซส์ S</a>
+                        <a class="dropdown-item">ไซส์ M</a>
+                        <a class="dropdown-item">ไซส์ L</a>
+                      </div>
+                    </div>
+               
+                    <router-link to="/cart/cart" >
                  <button  @click="addIdToCart(product.productId)" type="button" class="btn btn-sm" href="#" style="background:#C44953;margin-right:3px;color:#ffffff">ซื้อเลย</button>
                  </router-link>
-                 <button @click="addIdToCart(product.productId)" class="btn btn-sm">
+                 </div>
+                    
+                  
+                 <!-- <div class="btn-group-sm btn-group-toggle" data-toggle="buttons" >
+                    <label class="btn btn-secondary active" style="">
+                      <input type="radio" name="options" id="option1" autocomplete="off" checked> ไซส์ S
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" id="option2" autocomplete="off"> ไซส์ M
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" id="option3" autocomplete="off"> ไซส์ L
+                    </label>
+                  </div> -->
+
+                 
+                 <!-- <button @click="addIdToCart(product.productId)" class="btn btn-sm">
                     <img src="../pic/shopping-cart1.png" width="20px" height="20px" style="float:right;margin-right:3px;margin:1px">
-                 </button>
-                 </p>
+                 </button>  -->
+                 
               </div>
           </div>&nbsp;&nbsp;
           </div>

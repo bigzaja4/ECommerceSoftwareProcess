@@ -8,9 +8,14 @@ export default new Vuex.Store({
     isCartPage: true,
     cart: [],
     totalPrice: 0,
-    userName: ''
+    userName: '',
+    isConnected: false
   },
   mutations: {
+    setIsConnected: (state,val) => {
+      console.log(val)
+      state.isConnected = val;
+    },
     setUserName: (state, name) => {
       state.userName = name;
     },
@@ -41,6 +46,9 @@ export default new Vuex.Store({
     
   },
   actions: {
+    setIsConnected: ({commit},val) => {
+      commit('setIsConnected',val)
+    },
     setUserName: ({commit},name) => {
       commit('setUserName',name)
     },
@@ -72,6 +80,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getIsConnected: state => {
+      return state.isConnected
+    },
     getUserName: state => {
       return state.userName
     },

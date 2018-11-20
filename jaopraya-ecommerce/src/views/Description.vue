@@ -25,35 +25,51 @@
             <p style="text-align:left;font-size:30px;color:#C44953;margin-top:-10px">  <Blink><b>&nbsp;&nbsp;&nbsp;{{product.productPrice}}</b></Blink>  บาท</p>
            <hr style="width:400px;margin-left:0px;margin-bottom:20px">
             <div style="text-align:left;">
-            <div class="dropdown" style="margin-bottom:5px">
-               &nbsp;ตัวเลือกสินค้า &nbsp;
-                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                  ขนาด
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">ไซส์ S</a>
-                  <a class="dropdown-item" href="#">ไซส์ M</a>
-                  <a class="dropdown-item" href="#">ไซส์ L</a>
-                </div>
+              
+              &nbsp;&nbsp;<b>ขนาด</b> <br>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> ไซส์ S
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> ไซส์ M
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> ไซส์ L
+              </label>
             </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; จำนวน &nbsp; 
-                <input type="number" style="width:50px;border-radius: 5px">
-                &nbsp; มีสินค้าทั้งหมด {{description.stockQuantity}} ชิ้น
+               <p> &nbsp; มีสินค้าทั้งหมด {{description.stockQuantity}} ชิ้น </p>
+ 
+            <!-- login แล้ว -->
             
+            <button @click="addIdToCart(product.productId)" type="button" class="btn btn-danger" v-if="getIsConnected">เพิ่มไปยังรถเข็น</button>&nbsp;
+
+            <!-- ยังไม่ล็อกอิน -->
             
-        
-            <br>
-            <br>
-            <button @click="addIdToCart(product.productId)" type="button" class="btn btn-danger">เพิ่มไปยังรถเข็น</button>&nbsp;
-            <router-link to="/cart/cart" >
-            <button @click="addIdToCart(product.productId)" type="button" class="btn btn-danger">ซื้อสินค้า</button>
+            <button @click="getAlert(true)" type="button" class="btn btn-danger" v-if="!getIsConnected" >เพิ่มไปยังรถเข็น</button>&nbsp;
+            
+              
+            <router-link to="/cart/cart"  >
+            <button @click="addIdToCart(product.productId)&&console.log('ff')" type="button" class="btn btn-danger" v-if="getIsConnected">ซื้อสินค้า</button>
              </router-link>
+
+             <button @click="getAlert(true)&&console.log('dd')" type="button" class="btn btn-danger" v-if="!getIsConnected">ซื้อสินค้า</button>
+             <div class="card" style="position:absolute;z-index:4;margin:50px;left:-50%;top:-20%;right:auto;background:#ffffff;border:3px solid #EE8981;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);border-radius: 10px;" v-if="alert" >
+                            <p style="color:#000000;margin:50px;text-align:center;color:#EE8981;font-size:25px">
+                              
+                            <button class="btn" style="float:right;font-size:20px;color:#EE8981;margin-top:-43px;margin-right:-27px;background:#ffffff;" @click="getAlert(false)"><b>X</b></button>  
+                              
+                            <img src="../pic/exclamation-mark.png" width="150px" height="150px"/> <br><br>
+                            <b>ล็อกอินก่อนดิสัส</b></p>
+                        </div> 
+
+                        
             </div>
           </div>
         </div>
       </div>
     </div>
-
+      
     <br>
     <!-- ----------------------------------------------- -->
     <h3 style="text-align:left;margin-left:11.5%;font-size:18px;color:#8D8E8D;margin-bottom:5px">รายละเอียดสินค้าเพิ่มเติม</h3>
@@ -92,7 +108,8 @@ export default {
     return {
         description: {},
         product: {},
-        id: ''
+        id: '',
+        alert: false
     };
   },
   props: {
@@ -100,11 +117,13 @@ export default {
     product: {}
   },
   computed: {
-    ...mapGetters(['getCart'])
+    ...mapGetters(['getCart']),
+    ...mapGetters(['getIsConnected']),
   },
   name: "Description",
   methods: {
       ...mapActions(['addIdToCart']),
+      ...mapActions(['setIsConnected']),
       getDescription: async function() {
       let description = await axios.get('http://localhost:5000/description/'+this.id)
       this.description = description.data
@@ -114,12 +133,16 @@ export default {
       let product = await axios.get('http://localhost:5000/productId/'+this.id)
       this.product = product.data
       console.log(this.product)
-      }
+      },
+    getAlert(p) {
+      this.alert = p;
+    }
 
   },
   mounted() {
       this.getDescription();
       this.getProduct();
+      
   },
 };
 </script>

@@ -22,8 +22,8 @@
                   </div>
                   <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 30px; text-align: right;">     
                      <div style="font-family: 'Kanit', sans-serif;">
-                       <b  v-if="!isConnected" style="font-size:15px;color:#ffffff">WELCOME  &nbsp;|</b>
-                       <b  v-if="isConnected" style="font-size:15px;color:#ffffff">{{name}}  &nbsp;|</b>
+                       <b  v-if="!getIsConnected" style="font-size:15px;color:#ffffff">WELCOME  &nbsp;|</b>
+                       <b  v-if="getIsConnected" style="font-size:15px;color:#ffffff">{{name}}  &nbsp;|</b>
                      <facebook-login class="btn"
                           appId="266604957536014"
                           @login="onLogin"
@@ -85,10 +85,12 @@ export default {
   computed: {
     ...mapGetters(['getIsCartPage']),
     ...mapGetters(['getCartLength']),
-    ...mapGetters(['getUserName'])
+    ...mapGetters(['getUserName']),
+    ...mapGetters(['getIsConnected']),
   },methods: {  
     ...mapActions(['notCartPage']),
     ...mapActions(['setUserName']),
+    ...mapActions(['setIsConnected']),
     getUserData() {
       this.FB.api('/me', 'GET', { fields: 'id,name,email' },
         userInformation => {
@@ -105,11 +107,14 @@ export default {
       if (this.isConnected) this.getUserData()
     },
     onLogin() {
-      this.isConnected = true
-      this.getUserData()
+      // this.isConnected = true
+      this.getUserData(),
+      this.setIsConnected(true);
     },
     onLogout() {
-      this.isConnected = false;
+      // this.isConnected = false;
+      this.setIsConnected(false);
+      FB.logout()
     },
     getAlert(p) {
       this.alert = p;
@@ -121,7 +126,7 @@ export default {
   data() {
     return{
       searchKeyword: '',
-      isConnected: false,
+      // isConnected: false,
       name: '',
       email: '',
       personalID: '',
@@ -132,7 +137,12 @@ export default {
   },
   mounted() {
       this.notCartPage();
-      
+      console.log("aa")
+      if(getIsConnect){
+        this.getUserData(),
+      this.setIsConnected(true);
+        
+      }
   },
   
  
