@@ -53,7 +53,7 @@
                             <button class="btn" style="float:right;font-size:20px;color:#EE8981;margin-top:-43px;margin-right:-27px;background:#ffffff;" @click="getAlert(false)"><b>X</b></button>  
                               
                             <img src="./pic/exclamation-mark.png" width="150px" height="150px"/> <br><br>
-                            <b>ล็อกอินก่อนดิสัส</b></p>
+                            <b>กรุณา login</b></p>
                         </div>  
                          
                          

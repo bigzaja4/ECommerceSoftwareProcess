@@ -33,7 +33,8 @@
                   <p id="add" style="color:#8D8E8D;float:left;margin-top:-29px;margin-left:14%" >ที่อยู่จัดส่ง</p>
                   <div class="border-row">
                       <div id="box-address" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
-                          <input type="text" style="width:700px;word-wrap:break-word;text-align:left" v-model="inputAddress">
+                          <!-- <input type="text" style="width:700px;word-wrap:break-word;text-align:left;border-radius: 6px;margin-left:-150px;margin-bottom:8px" v-model="inputAddress"> -->
+                          <input class="form-control form-control-sm" type="text" placeholder="ที่อยู่" v-model="inputAddress" style="margin:20px;width:930px">
                       </div>
                   </div>
                   <br>
@@ -44,34 +45,54 @@
                       <div class="col-sm-1" style="margin-top:-3px">ราคารวม</div>
                   </div> 
                   <div class="row" style="width:76.5%;margin-left:12%;border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
-                      <table style="width:100%" >
-                                            <tr v-for="item in product" :key="item" >
-                                                <td style="width:13%;margin:2px"><div class="img-resize" style="float:right;border-radius: 6px;border:1px solid"><img :src="`${item.picture}`" >&nbsp;&nbsp;&nbsp;</div></td>
+                      <table style="width:100%;margin-top:12px">
+                                            <tr v-for="item in product" :key="item" style="height:90px">
+                                                <td style="width:13%;margin:2px;"><div class="img-resize" style="float:right;border-radius: 6px;border:1px solid"><img :src="`${item.picture}`" >&nbsp;&nbsp;&nbsp;</div></td>
                                                 <td style="width:52%;text-align:left;">&nbsp;&nbsp;{{item.productName}}</td>
                                                 <td style="width:13%;">1</td>
                                                 <td style="width:13p%;">1</td>
                                                 <td style="width:auto;">{{item.productPrice}}</td>
                                               </tr>
+                                              
                                         </table>
-                                  <div class="" style="">
-                                      <hr>
-                                      <span class="text-total" style="">
-                                      <p style="text-align;right">ราคาสินค้ารวม {{this.getTotalPrice}}</p> 
-                                      <p style="margin-top:-18px;text-align;right">ค่าจัดส่ง 0 THB</p>
-                                      <p style="margin-top:-10px;text-align;right">รวมทั้งหมด {{this.getTotalPrice}} THB</p>
-                                    </span>
-                                  </div>
+                                  
+                                      
+                                      <div style="float:right;width:100%">
+                                        <hr>
+                                      <p style="">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        ราคาสินค้ารวม
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                         {{this.getTotalPrice}} THB</p> 
+                                      <p style="margin-top:-18px;text-align;right">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        ค่าจัดส่ง&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 THB</p>
+                                      <p style="margin-top:-10px;text-align;right;font-size:20px">
+                                       
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <b>รวมทั้งหมด&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.getTotalPrice}} THB</b></p>
+                                    </div>
+                                  
                    </div>
                </div>
                <br>
-               <div style="float:right;margin-right:11.5%">
+               <div style="float:right;margin-right:11.5%;margin-top:-10px">
+                 <button class="btn" @click="redirectToHome()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-right:8px">
+                  ดูรายละเอียดการซื้อ
+               </button>
                <button class="btn" @click="payCard()" type="button" id="confirmbutton" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);"> 
                   สั่งซื้อสินค้า  
                 </button>
                </div>
-               <button @click="redirectToHome()">
-                  ดูรายละเอียดการซื้อ
-               </button>
+               
               <br><br><br><br>
             </div>
         </div>

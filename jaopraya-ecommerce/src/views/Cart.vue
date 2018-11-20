@@ -40,7 +40,7 @@
                           <table width=70% class="textbox" cellpadding="10" style="margin-bottom:-20px">
                             <tr>
                               <td width=50px style="text-align:center;">
-                                 <input type='checkbox' name='btn' id='btn'  onclick='check_agree();'/>
+                                
                               </td>
                               <td width=100px style="text-align:center;">
                                   <div  class="img-resize" style="border: 2px solid #959595  ;border-radius: 10px;float:right">
@@ -66,7 +66,7 @@
                             <table width=70% class="textbox" cellpadding="10" >
                                 <tr>
                                     <td>
-                                        <input type='checkbox' name='btn' id='btn'  onclick='check_agree();'/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เลือกทั้งหมด 
+                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                      </td>
                                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
