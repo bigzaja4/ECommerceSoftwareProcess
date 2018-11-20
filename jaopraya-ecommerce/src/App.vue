@@ -85,15 +85,17 @@ export default {
   computed: {
     ...mapGetters(['getIsCartPage']),
     ...mapGetters(['getCartLength']),
+    ...mapGetters(['getUserName'])
   },methods: {  
     ...mapActions(['notCartPage']),
+    ...mapActions(['setUserName']),
     getUserData() {
       this.FB.api('/me', 'GET', { fields: 'id,name,email' },
         userInformation => {
           this.personalID = userInformation.id;
           this.email = userInformation.email;
           this.name = userInformation.name;
-          
+          this.setUserName(this.name);
         }
       )
     },

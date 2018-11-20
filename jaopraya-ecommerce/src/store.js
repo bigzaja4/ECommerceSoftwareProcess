@@ -7,9 +7,16 @@ export default new Vuex.Store({
   state: {
     isCartPage: true,
     cart: [],
-    totalPrice: 0
+    totalPrice: 0,
+    userName: ''
   },
   mutations: {
+    setUserName: (state, name) => {
+      state.userName = name;
+    },
+    clearUserName: (state) => {
+      state.userName = '';
+    },
     inCartPage: (state) => {
       state.isCartPage = false;
     },
@@ -34,6 +41,12 @@ export default new Vuex.Store({
     
   },
   actions: {
+    setUserName: ({commit},name) => {
+      commit('setUserName',name)
+    },
+    clearUserName: ({commit}) => {
+      commit('clearUserName')
+    },
     setTotalPrice: ({commit},totalPrice) => {
       commit('setTotalPrice',totalPrice)
     },
@@ -59,6 +72,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getUserName: state => {
+      return state.userName
+    },
     getIsCartPage: state => {
       return state.isCartPage
     },

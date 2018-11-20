@@ -95,6 +95,7 @@ export default {
         ...mapGetters(['getIsCartPage']),
         ...mapGetters(['getIdCart']),
         ...mapGetters(['getTotalPrice']),
+        ...mapGetters(['getUserName'])
     },methods: {  
         ...mapActions(['inCartPage']),
         ...mapActions(['notCartPage']),
@@ -145,7 +146,7 @@ export default {
                 orderDate: date,
                 totalPrice: this.getTotalPrice,
                 listProduct: this.listProduct,
-                name: 'buyer',
+                name: this.getUserName,
                 tracking: '123456789'       
             }
           }).then( )
