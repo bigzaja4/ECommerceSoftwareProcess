@@ -40,13 +40,13 @@
                         
                         
                         
-                        <router-link to='/cart/cart' v-if="isConnected">
+                        <router-link to='/cart/cart' v-if="getIsConnected">
                          <img src="./pic/shopping-cart.png" width="40px" height="40px"/> 
                         </router-link>
                         
                         
                        
-                         <img src="./pic/shopping-cart.png" width="40px" height="40px" v-if="!isConnected"  @click="getAlert(true)" /> 
+                         <img src="./pic/shopping-cart.png" width="40px" height="40px" v-if="!getIsConnected"  @click="getAlert(true)" /> 
                           <div class="card" style="position:absolute;z-index:2;margin:50px;left:-80%;right:auto;top:185px;background:#ffffff;border:3px solid #EE8981;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);border-radius: 10px;" v-if="alert" >
                             <p style="color:#000000;margin:50px;text-align:center;color:#EE8981;font-size:25px">
                               
