@@ -114,7 +114,7 @@ export default {
     onLogout() {
       // this.isConnected = false;
       this.setIsConnected(false);
-      FB.logout()
+      
     },
     getAlert(p) {
       this.alert = p;
@@ -137,12 +137,8 @@ export default {
   },
   mounted() {
       this.notCartPage();
-      console.log("aa")
-      if(getIsConnect){
-        this.getUserData(),
-      this.setIsConnected(true);
-        
-      }
+      
+      
   },
   
  
