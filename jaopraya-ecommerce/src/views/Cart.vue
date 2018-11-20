@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid" style="font-family: 'Kanit', sans-serif;background: #ECEDEF;">
        <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-top:-60px;margin-left:-30px;margin-right:-30px" >
-      <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 30px; text-align: right;">     
+      <div class="col" style="background: #C44953; padding-top: 5px;padding-right: 1px; text-align: right;">     
                     <p class="userName" style="margin-top:5px;margin-bottom:7px" >
                         <img src="../pic/notification.png" width="25px" height="25px"/>
                         <img src="../pic/settings-work-tool.png" width="25px" height="25px"/>&nbsp;
                   
-                        <img src="../pic/user-avatar-main-picture.png" width="35px" height="35px"/>&nbsp;&nbsp;<b>Prayut</b></p>
+                        </p>
                     </div>
   </div>
       <div class="row" style="box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-left:-30px;margin-right:-30px">
