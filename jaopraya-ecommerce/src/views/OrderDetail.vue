@@ -26,16 +26,15 @@
                  <!-- -----------------------------header-------------------------------- -->
                 <br> 
                 <div class="container">
-                <div class="row">
+                <div class="row" >
                         <div class="col" style="background: #ECEDEF; padding-right: 15px"><br>
                             <p id="add" style="color:#8D8E8D;float:left;margin-left:19%;margin-bottom:-81px" >ที่อยู่จัดส่ง</p>
                             <table class="textbox" width=70%  cellpadding="10" >
                               <tr>
                                   <td >
                                     <p style="width:450px;word-wrap:break-word;text-align:left;margin:10px;margin-left:30px">
-                                      <b>ประยุทธ์ จันทรา</b><br>
-                                      3/21 โครงการ the cube (ประชาอุทิศ) อาคารB ชั้น3 ซ.ประชาอุทิศ37 <br> 
-                                      แขวงราษฎร์บูรณะ เขตราษฎร์บูรณะ กรุงเทพมหานคร 10140</p>
+                                      <b>{{order[this.length].name}}</b><br>
+                                      {{order[this.length].address}}</p>
                                   </td>
                               </tr>
 
@@ -49,22 +48,21 @@
                       <!-- ---------------------------------------ช่องสินค้า no1 ----------------------------------------       -->
                           <table width=70% class="textbox" cellpadding="10" style="margin-bottom:-20px">
                               
-                            <tr>
+                            <tr v-for="item in product" :key="item">
                               <td style="width:20%">
                                 <div  class="img-resize" style="border: 2px solid #959595  ;border-radius: 10px;float:right">
-                                  <img src="pic/nike.png" />
-                                  <!-- <img :src="`${item.picture}`"  /> -->
+                                  <img :src="item.picture" />
                                   </div>
                                 </td>
                               <td style="width:46%;text-align:left;">
-                                NIKE Repel<br>
-                                เสื้อเจ็คเก๊ตสำหรับผู้หญิง
+                                {{item.productName}}<br>
+                                {{item.category}}
                                 </td>
                                 <td style="width:13%">
                                   1 ชิ้น
                                 </td>
                                 <td style="width:auto">
-                                    2,900 THB
+                                    {{item.productPrice}} THB
                                 </td>
                             </tr>
                           </table>
@@ -92,9 +90,9 @@
                                           <br>&nbsp;&nbsp;สั่งซื้อสินค้าวันที่: 7 ก.ย. 2561                 
                                           <br>&nbsp;&nbsp;ชำระเงินวันที่: 7 ก.ย. 2561</p>
                                           <hr style="width:400px;margin-left:20px;">
-                                          <p style="text-align:left;margin:10px;margin-left:30px">&nbsp;&nbsp;ราคาสินค้ารวม: 6,600 THB 
-                                          <br>&nbsp;&nbsp;ค่าส่ง: 100 THB 
-                                          <br>&nbsp;&nbsp;รวมทั้งหมด: 6,700 THB
+                                          <p style="text-align:left;margin:10px;margin-left:30px">&nbsp;&nbsp;ราคาสินค้ารวม: {{order[this.length].totalPrice}} THB 
+                                          <br>&nbsp;&nbsp;ค่าส่ง: 0 THB 
+                                          <br>&nbsp;&nbsp;รวมทั้งหมด: {{order[this.length].totalPrice}} THB
                                           </p>
                                     </td>
                                     
@@ -115,13 +113,55 @@
 
   
 </template>
+
+
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";  
-
 axios.defaults.withCredentials = true;
 export default {
-  
+    data() {
+        return {
+            order: [],
+            product: []
+        }
+    },
+    methods: {
+        getAllOrder: async function() {
+        let order = await axios.get("http://localhost:5000/order/");  
+        this.order = order.data;
+        console.log(this.order);
+        console.log(this.order.length);
+        this.length = this.order.length-1;
+        console.log(this.length);
+        
+       
+        let listId = this.order[this.length].listProduct;
+        let productId = [];
+        
+        while(listId.indexOf(',') != -1){
+            productId.push( listId.substr( 0 , listId.indexOf(',') ))
+            console.log("First:" +listId.substr( 0 , listId.indexOf(',') ))
+            listId = listId.substr(listId.indexOf(',')+1 , listId.length)
+            
+        }
+        console.log("last"+listId)
+        productId.push(listId);
+        console.log(productId)
+        
+        for(let i=0; i<productId.length; i++){ 
+            let product = await axios.get('http://localhost:5000/productId/'+productId[i])
+            this.product.push(product.data);
+            this.totalPrice += product.data.productPrice;
+        }
+        console.log(this.product)
+      }
+    
+    },
+    mounted() {
+      this.getAllOrder();
+    }
+
 }
 </script>
 <style>

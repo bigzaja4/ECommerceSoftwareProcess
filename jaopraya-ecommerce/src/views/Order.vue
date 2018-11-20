@@ -33,7 +33,7 @@
                   <p id="add" style="color:#8D8E8D;float:left;margin-top:-29px;margin-left:14%" >ที่อยู่จัดส่ง</p>
                   <div class="border-row">
                       <div id="box-address" style="border:3px solid #ffffff !important;background: #ffffff;border-radius: 6px;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);">
-                          <input type="text" style="width:700px;word-wrap:break-word;text-align:left">
+                          <input type="text" style="width:700px;word-wrap:break-word;text-align:left" v-model="inputAddress">
                       </div>
                   </div>
                   <br>
@@ -69,6 +69,9 @@
                   สั่งซื้อสินค้า  
                 </button>
                </div>
+               <button @click="redirectToHome()">
+                  ดูรายละเอียดการซื้อ
+               </button>
               <br><br><br><br>
             </div>
         </div>
@@ -79,14 +82,13 @@
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";  
 axios.defaults.withCredentials = true;
-
-axios.defaults.withCredentials = true;
 export default {
     data() {
         return {
             product: [],
             totalPrice: 0,
-
+            inputAddress: '',
+            listProduct: '',
         }
     },
     computed: {
@@ -108,14 +110,45 @@ export default {
                 url: 'http://localhost:5000/Payment',
                 data: {
                   token: token,
-                  totalPrice: 12345
+                  totalPrice: (this.getTotalPrice*100)
                 }
-              }).then(rest=>console.log(rest))
+              }).then(rest=>console.log(rest), this.paySuccessAddToOrder())
             },
             onFormClosed: () => {
               /* Your handler when form was closed */
+             
+              console.log('This is FormClose')
             },
           })
+        },
+        getListProduct: function(){
+            let idCart = this.getIdCart
+            idCart.forEach(element => {
+              this.listProduct += element+","
+            });
+            this.listProduct = this.listProduct.substr(0,this.listProduct.length-1);
+            console.log(this.listProduct);
+        },
+        paySuccessAddToOrder: async function(){
+          var orderDate = new Date();
+          var day = orderDate.getDay();
+          var month = orderDate.getMonth();
+          var year = orderDate.getFullYear();
+          var date = year+'-'+month+'-'+day;
+          console.log(date);
+          axios({
+            
+            method: 'post',
+            url: 'http://localhost:5000/order/success',
+            data: {
+                address: this.inputAddress,
+                orderDate: date,
+                totalPrice: this.getTotalPrice,
+                listProduct: this.listProduct,
+                name: 'buyer',
+                tracking: '123456789'       
+            }
+          }).then( )
         },
         addItemToCart: async function() {
             let productId = this.getIdCart;
@@ -125,16 +158,20 @@ export default {
                 this.totalPrice += product.data.productPrice;
             }
             console.log(this.product)
+        },
+        redirectToHome: function(){
+            this.$router.push('order/')
         }
         
     },
     mounted() {
+        this.getListProduct();
         console.log("total: "+this.getTotalPrice)
         this.inCartPage();
         this.addItemToCart();
         OmiseCard.configure({
           publicKey: 'pkey_test_5dz2dxgy2mdrk7e7zhx',
-          amount: this.getTotalPrice
+          amount: (this.getTotalPrice*100)
         });
     }   
 }

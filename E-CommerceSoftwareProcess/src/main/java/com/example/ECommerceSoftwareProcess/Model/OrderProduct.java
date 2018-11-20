@@ -11,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -22,7 +25,6 @@ public class OrderProduct implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int OrderId;
     private String address;
-    private Date orderDate;
     private double totalPrice;
     private String listProduct;
     private String name;
@@ -30,8 +32,6 @@ public class OrderProduct implements Serializable {
 
     public OrderProduct() {
     }
-    
-    
 
     public int getOrderId() {
         return OrderId;
@@ -47,14 +47,6 @@ public class OrderProduct implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Date getDate() {
-        return orderDate;
-    }
-
-    public void setDate(Date date) {
-        this.orderDate = date;
     }
 
     public double getTotalPrice() {
