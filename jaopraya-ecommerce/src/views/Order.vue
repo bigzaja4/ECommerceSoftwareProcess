@@ -129,7 +129,7 @@ export default {
               /* Your code, e.g., submit form or send ajax request to server */
               axios({
                 method: 'post',
-                url: 'http://localhost:5000/Payment',
+                url: 'https://jaophayabackendcommerce.mybluemix.net/Payment',
                 data: {
                   token: token,
                   totalPrice: (this.getTotalPrice*100)
@@ -161,7 +161,7 @@ export default {
           axios({
             
             method: 'post',
-            url: 'http://localhost:5000/order/success',
+            url: 'https://jaophayabackendcommerce.mybluemix.net/order/success',
             data: {
                 address: this.inputAddress,
                 orderDate: date,
@@ -175,7 +175,7 @@ export default {
         addItemToCart: async function() {
             let productId = this.getIdCart;
             for(let i=0; i<productId.length; i++){ 
-                let product = await axios.get('http://localhost:5000/productId/'+productId[i])
+                let product = await axios.get('https://jaophayabackendcommerce.mybluemix.net/productId/'+productId[i])
                 this.product.push(product.data);
                 this.totalPrice += product.data.productPrice;
             }

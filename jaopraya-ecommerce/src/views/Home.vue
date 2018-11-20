@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     getAllProduct: async function() {
-      let product = await axios.get("http://localhost:5000/product");  
+      let product = await axios.get("https://jaophayabackendcommerce.mybluemix.net/product");  
       this.product = product.data;
       console.log(this.product);
     },
@@ -53,7 +53,7 @@ export default {
       }
     },
     searchItem: async function() {
-      let product = await axios.get('http://localhost:5000/product/'+this.searchKey)
+      let product = await axios.get('https://jaophayabackendcommerce.mybluemix.net/product/'+this.searchKey)
       this.product = product.data
       console.log(this.product)
     },
