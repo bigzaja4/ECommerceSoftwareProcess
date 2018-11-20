@@ -129,7 +129,7 @@ export default {
     methods: {
         ...mapActions(['clearIdCart']),
         getAllOrder: async function() {
-        let order = await axios.get("http://localhost:5000/order/");  
+        let order = await axios.get("https://jaophayabackendcommerce.mybluemix.net/order/");  
         this.order = order.data;
         console.log(this.order);
         console.log(this.order.length);
@@ -151,7 +151,7 @@ export default {
         console.log(productId)
         
         for(let i=0; i<productId.length; i++){ 
-            let product = await axios.get('http://localhost:5000/productId/'+productId[i])
+            let product = await axios.get('https://jaophayabackendcommerce.mybluemix.net/productId/'+productId[i])
             this.product.push(product.data);
             this.totalPrice += product.data.productPrice;
         }
