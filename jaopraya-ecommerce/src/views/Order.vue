@@ -84,7 +84,7 @@
                    </div>
                </div>
                <br>
-               <div style="float:right;margin-right:11.5%;margin-top:-10px">
+               <div style="float:right;margin-right:13.5%;margin-top:-10px">
                  <button class="btn" @click="redirectToHome()" style="background:#C44953;color:#ffffff;box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, .5);margin-right:8px">
                   ดูรายละเอียดการซื้อ
                </button>

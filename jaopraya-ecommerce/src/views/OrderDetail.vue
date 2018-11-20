@@ -42,8 +42,8 @@
                   <!-- ----------------------------------------ที่อยู่จัดส่ง---------------------------------------- -->
                             <div class="row" style="margin-left:-10px;color:#8D8E8D;">
                                 <div class="col-sm-8" style="text-align:left;margin-right:-180px;margin-left:19%;margin-top:20px;margin-bottom:-30px">สินค้าทั้งหมด</div>
-                                <div class="col-sm-1.5" style="margin-top:20px;margin-bottom:-30px">สถานะ</div>
-                                <div class="col-sm-2" style="margin-top:20px;margin-bottom:-30px">คำสั่งซื้อ</div>
+                                <div class="col-sm-1.5" style="margin-top:20px;margin-bottom:-30px;margin-left:-60px">จำนวน</div>
+                                <div class="col-sm-2" style="margin-top:20px;margin-bottom:-30px">ราคา</div>
                             </div> 
                       <!-- ---------------------------------------ช่องสินค้า no1 ----------------------------------------       -->
                           <table width=70% class="textbox" cellpadding="10" style="margin-bottom:-20px">
