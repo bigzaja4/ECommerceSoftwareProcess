@@ -127,6 +127,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['clearIdCart']),
         getAllOrder: async function() {
         let order = await axios.get("http://localhost:5000/order/");  
         this.order = order.data;
@@ -160,6 +161,7 @@ export default {
     },
     mounted() {
       this.getAllOrder();
+      this.clearIdCart();
     }
 
 }
