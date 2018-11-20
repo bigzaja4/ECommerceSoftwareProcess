@@ -49,7 +49,7 @@
                                             <tr v-for="item in product" :key="item" style="height:90px">
                                                 <td style="width:13%;margin:2px;"><div class="img-resize" style="float:right;border-radius: 6px;border:1px solid"><img :src="`${item.picture}`" >&nbsp;&nbsp;&nbsp;</div></td>
                                                 <td style="width:52%;text-align:left;">&nbsp;&nbsp;{{item.productName}}</td>
-                                                <td style="width:13%;">1</td>
+                                                <td style="width:13%;">{{item.productPrice}}</td>
                                                 <td style="width:13p%;">1</td>
                                                 <td style="width:auto;">{{item.productPrice}}</td>
                                               </tr>
